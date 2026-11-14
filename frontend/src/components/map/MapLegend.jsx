@@ -16,7 +16,7 @@ export default function MapLegend() {
         <span className="w-2.5 h-2.5 rounded-full bg-teal-600 inline-block" /> Ramp
       </span>
       <span className="flex items-center gap-1.5 ml-auto">
-        <span className="w-4 h-0.5 bg-blue-600 inline-block" /> Primary
+        <span className="w-4 h-0.5 bg-emerald-600 inline-block" /> Primary
       </span>
       <span className="flex items-center gap-1.5">
         <span className="w-4 h-0.5 border-t-2 border-dashed border-amber-500 inline-block" /> Backup

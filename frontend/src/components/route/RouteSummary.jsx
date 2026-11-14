@@ -17,7 +17,6 @@ export default function RouteSummary() {
     routeView,
     activeSelection,
     setRouteSelection,
-    clearSelection,
     displayedRoute,
     startNode,
     setTargetNode,
@@ -80,15 +79,11 @@ export default function RouteSummary() {
           <button
             onClick={() => {
               resetSimulationPlayback();
-              if (activeSelection?.type === 'route' && activeSelection?.id === 'primary') {
-                clearSelection();
-              } else {
-                setRouteSelection('primary');
-              }
+              setRouteSelection('primary');
             }}
             className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
               activeSelection?.type === 'route' && activeSelection?.id === 'primary'
-                ? 'bg-blue-600 text-white shadow-sm'
+                ? 'bg-emerald-600 text-white shadow-sm'
                 : 'text-slate-600 hover:bg-slate-100'
             }`}
             title="Focus Primary Route on floor map"
@@ -101,11 +96,7 @@ export default function RouteSummary() {
             <button
               onClick={() => {
                 resetSimulationPlayback();
-                if (activeSelection?.type === 'route' && activeSelection?.id === 'backup') {
-                  clearSelection();
-                } else {
-                  setRouteSelection('backup');
-                }
+                setRouteSelection('backup');
               }}
               className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
                 activeSelection?.type === 'route' && activeSelection?.id === 'backup'

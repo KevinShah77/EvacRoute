@@ -4,28 +4,69 @@ export default function MapNode({
   node,
   isStart,
   onDisplayedPath,
+  onPrimaryPath,
+  onBackupPath,
+  isHazardNode,
+  isRouteActive,
   routeView,
   activeSelection,
   transitionInfo,
   onNodeClick,
   onTransitionClick,
 }) {
+  const isRouteSelected = activeSelection?.type === 'route';
+
+  const routeActive =
+    isRouteActive ??
+    Boolean(isRouteSelected);
+
+  // When an evacuation route is active:
+  // Hide all unselected dots (room/corridor nodes).
+  // Exception: keep start location, primary route nodes, backup route nodes, and hazard nodes.
+  if (routeActive && !isStart && !onPrimaryPath && !onBackupPath && !isHazardNode) {
+    return null;
+  }
+
   let fill = '#334155';
   if (node.type === 'exit') fill = '#16a34a';
   else if (node.type === 'staircase') fill = '#f59e0b';
   else if (node.type === 'elevator') fill = '#9333ea';
   else if (node.type === 'ramp') fill = '#0d9488';
-
-  const isRouteSelected = activeSelection?.type === 'route';
-  const isBackupSelected = isRouteSelected && activeSelection?.id === 'backup';
+  else if (isHazardNode) fill = '#ef4444';
+  else if (routeActive) {
+    if (onPrimaryPath) fill = '#059669';
+    else if (onBackupPath) fill = '#d97706';
+  }
 
   const showLabel =
     isStart ||
     onDisplayedPath ||
+    onPrimaryPath ||
+    onBackupPath ||
+    isHazardNode ||
     node.type === 'exit' ||
     node.type === 'staircase' ||
     node.type === 'elevator' ||
     node.type === 'classroom';
+
+  let nodeStroke = '#ffffff';
+  let nodeStrokeWidth = '0.4';
+
+  if (isStart) {
+    nodeStroke = '#1d4ed8';
+    nodeStrokeWidth = '0.9';
+  } else if (isHazardNode) {
+    nodeStroke = '#ef4444';
+    nodeStrokeWidth = '0.9';
+  } else if (routeActive) {
+    if (onPrimaryPath) {
+      nodeStroke = activeSelection?.id === 'backup' ? '#059669' : '#10b981';
+      nodeStrokeWidth = '0.9';
+    } else if (onBackupPath) {
+      nodeStroke = '#d97706';
+      nodeStrokeWidth = '0.9';
+    }
+  }
 
   return (
     <g
@@ -61,16 +102,8 @@ export default function MapNode({
         cy={node.y}
         r={node.type === 'exit' || isStart ? '2.5' : '2'}
         fill={fill}
-        stroke={
-          isStart
-            ? '#1d4ed8'
-            : onDisplayedPath && isRouteSelected
-            ? isBackupSelected
-              ? '#d97706'
-              : '#3b82f6'
-            : '#ffffff'
-        }
-        strokeWidth={onDisplayedPath && isRouteSelected ? '0.9' : isStart ? '0.8' : '0.4'}
+        stroke={nodeStroke}
+        strokeWidth={nodeStrokeWidth}
       />
 
       <text

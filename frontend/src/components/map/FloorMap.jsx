@@ -1,5 +1,6 @@
 import React from 'react';
 import { FLOOR_MAP_IMAGES, FLOOR_ORDER } from '../../constants/floorConfig';
+import { edgeMatchesList } from '../../utils/geometry';
 import MapControls from './MapControls';
 import MapLegend from './MapLegend';
 import MapEdge from './MapEdge';
@@ -31,7 +32,13 @@ export default function FloorMap() {
       activeNodes.find((n) => n.id === e.target)
   );
 
-  const isRouteSelected = activeSelection?.type === 'route' && route;
+  const isRouteActive = Boolean(
+    route &&
+    route.distance !== -1 &&
+    activeSelection?.type === 'route'
+  );
+
+  const isRouteSelected = isRouteActive;
   const selectedRouteObj = isRouteSelected
     ? activeSelection.id === 'backup' && route?.backup_route
       ? route.backup_route
@@ -39,6 +46,36 @@ export default function FloorMap() {
       ? route
       : null
     : null;
+
+  // Active hazard node tracking for active floor (including inter-floor edges)
+  const hazardNodeIds = new Set();
+  (graph.edges || []).forEach((e) => {
+    if (e.hazard) {
+      if (activeNodes.some((n) => n.id === e.source)) hazardNodeIds.add(e.source);
+      if (activeNodes.some((n) => n.id === e.target)) hazardNodeIds.add(e.target);
+    }
+  });
+
+  // When evacuation route is active, hide all unselected corridor lines.
+  // Exception: keep primary route, backup route, and active hazard corridors visible.
+  const edgesToRender = activeEdges.filter((edge) => {
+    if (!isRouteActive) return true;
+    const isPrimary = edgeMatchesList(route?.edges, edge.source, edge.target);
+    const isBackup = edgeMatchesList(route?.backup_route?.edges, edge.source, edge.target);
+    const isHazard = Boolean(edge.hazard);
+    return isPrimary || isBackup || isHazard;
+  });
+
+  // When evacuation route is active, hide all unselected nodes/dots.
+  // Exception: keep start location, primary path nodes, backup path nodes, and hazard nodes visible.
+  const nodesToRender = activeNodes.filter((node) => {
+    if (!isRouteActive) return true;
+    const isStart = node.id === startNode;
+    const onPrimaryPath = Boolean(route?.path?.includes(node.id));
+    const onBackupPath = Boolean(route?.backup_route?.path?.includes(node.id));
+    const isHazardNode = hazardNodeIds.has(node.id);
+    return isStart || onPrimaryPath || onBackupPath || isHazardNode;
+  });
 
   const getOrderedFloorSteps = (routeObj) => {
     if (!routeObj?.steps) return [];
@@ -64,8 +101,8 @@ export default function FloorMap() {
     : [];
 
   const getFloorTransitionInfo = (nodeId) => {
-    if (!isRouteSelected || !selectedRouteObj?.steps) return null;
-    const steps = selectedRouteObj.steps || [];
+    if (!isRouteSelected) return null;
+    const steps = selectedRouteObj?.steps || route?.steps || [];
     const outgoing = steps.find((s) => s.from === nodeId && s.floor !== s.to_floor);
     const incoming = steps.find((s) => s.to === nodeId && s.floor !== s.to_floor);
     if (!outgoing && !incoming) return null;
@@ -114,7 +151,7 @@ export default function FloorMap() {
           )}
 
           {/* Base Interactive Edges */}
-          {activeEdges.map((edge, idx) => {
+          {edgesToRender.map((edge, idx) => {
             const src = activeNodes.find((n) => n.id === edge.source);
             const tgt = activeNodes.find((n) => n.id === edge.target);
             if (!src || !tgt) return null;
@@ -128,12 +165,13 @@ export default function FloorMap() {
                 route={route}
                 routeView={routeView}
                 activeSelection={activeSelection}
+                isRouteActive={isRouteActive}
                 onEdgeClick={applyCorridorHazard}
               />
             );
           })}
 
-          {/* Animated Directional Flow Overlay - Rendered ONLY for selected route */}
+          {/* Animated Directional Flow Overlay - Rendered for selected route */}
           {selectedFloorSteps.map((s) => (
             <line
               key={`flow-${s.step}`}
@@ -146,9 +184,9 @@ export default function FloorMap() {
                   ? '#ea580c'
                   : activeSelection?.id === 'backup'
                   ? '#d97706'
-                  : '#2563eb'
+                  : '#059669'
               }
-              strokeWidth={1.35}
+              strokeWidth={1.4}
               strokeLinecap="round"
               className={`pointer-events-none ${
                 activeSelection?.id === 'backup' ? 'evac-flow-backup' : 'evac-flow-primary'
@@ -157,11 +195,14 @@ export default function FloorMap() {
           ))}
 
           {/* Floor Nodes */}
-          {activeNodes.map((node) => {
+          {nodesToRender.map((node) => {
             const isStart = node.id === startNode;
+            const onPrimaryPath = Boolean(route?.path?.includes(node.id));
+            const onBackupPath = Boolean(route?.backup_route?.path?.includes(node.id));
             const onDisplayedPath = Boolean(
               isRouteSelected && selectedRouteObj?.path?.includes(node.id)
             );
+            const isHazardNode = hazardNodeIds.has(node.id);
             const transitionInfo = getFloorTransitionInfo(node.id);
 
             return (
@@ -170,6 +211,10 @@ export default function FloorMap() {
                 node={node}
                 isStart={isStart}
                 onDisplayedPath={onDisplayedPath}
+                onPrimaryPath={onPrimaryPath}
+                onBackupPath={onBackupPath}
+                isHazardNode={isHazardNode}
+                isRouteActive={isRouteActive}
                 routeView={routeView}
                 activeSelection={activeSelection}
                 transitionInfo={transitionInfo}

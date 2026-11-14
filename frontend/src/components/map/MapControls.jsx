@@ -50,7 +50,7 @@ export default function MapControls() {
                   <span
                     title="Active evacuation route passes through this floor"
                     className={`w-2 h-2 rounded-full ${
-                      isActive ? 'bg-blue-400 animate-pulse' : 'bg-blue-600'
+                      isActive ? 'bg-emerald-400 animate-pulse' : 'bg-emerald-600'
                     }`}
                   />
                 )}

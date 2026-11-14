@@ -8,19 +8,26 @@ export default function MapEdge({
   route,
   routeView,
   activeSelection,
+  isRouteActive,
   onEdgeClick,
 }) {
   const hazard = edge.hazard;
   const isRouteMode = activeSelection?.type === 'route';
   const isHazardMode = activeSelection?.type === 'hazard';
 
+  const routeActive =
+    isRouteActive ??
+    Boolean(isRouteMode && route && route.distance !== -1);
+
   const isPrimary = edgeMatchesList(route?.edges, edge.source, edge.target);
   const isBackup = edgeMatchesList(route?.backup_route?.edges, edge.source, edge.target);
 
-  // When a route is selected, ONLY highlight the currently active route's edges
-  const isHighlighted =
-    isRouteMode &&
-    (activeSelection?.id === 'backup' ? isBackup : isPrimary);
+  // When an evacuation route is active:
+  // Hide all unselected lines (corridors).
+  // Exception: keep primary route, backup route, and active hazard corridors.
+  if (routeActive && !isPrimary && !isBackup && !hazard) {
+    return null;
+  }
 
   // Distinguish the selected hazard brush
   const isSelectedHazardBrush =
@@ -32,7 +39,7 @@ export default function MapEdge({
 
   if (hazard === 'fire') {
     stroke = isSelectedHazardBrush ? '#b91c1c' : '#ef4444';
-    strokeWidth = isSelectedHazardBrush ? 2.6 : 1.35;
+    strokeWidth = isSelectedHazardBrush ? 2.6 : 1.5;
     dashArray = isSelectedHazardBrush ? '3,1' : '2,1.5';
   } else if (hazard === 'smoke') {
     stroke = isSelectedHazardBrush ? '#334155' : '#64748b';
@@ -42,9 +49,28 @@ export default function MapEdge({
     stroke = isSelectedHazardBrush ? '#c2410c' : '#ea580c';
     strokeWidth = isSelectedHazardBrush ? 2.8 : 1.6;
     dashArray = isSelectedHazardBrush ? '1.5,1' : '0.8,1.3';
-  } else if (isHighlighted) {
-    stroke = activeSelection?.id === 'backup' ? '#fde68a' : '#bfdbfe';
-    strokeWidth = 2.0;
+  } else if (routeActive) {
+    if (isPrimary && isBackup) {
+      if (activeSelection?.id === 'backup') {
+        stroke = '#d97706'; // Amber focused
+        strokeWidth = 2.8;
+        dashArray = 'none';
+      } else {
+        stroke = '#059669'; // Emerald green focused
+        strokeWidth = 2.8;
+        dashArray = 'none';
+      }
+    } else if (isPrimary) {
+      // Primary Route: clear emerald green
+      stroke = '#059669';
+      strokeWidth = activeSelection?.id === 'primary' ? 2.8 : 2.0;
+      dashArray = 'none';
+    } else if (isBackup) {
+      // Secondary / Backup Route: distinct amber
+      stroke = '#d97706';
+      strokeWidth = activeSelection?.id === 'backup' ? 2.8 : 2.2;
+      dashArray = activeSelection?.id === 'backup' ? 'none' : '3,1.5';
+    }
   }
 
   const midX = (src.x + tgt.x) / 2;
@@ -61,8 +87,12 @@ export default function MapEdge({
   } else if (hazard === 'debris') {
     edgeLabel = isSelectedHazardBrush ? '⚠ DEBRIS' : 'DEBRIS';
     edgeLabelClass = isSelectedHazardBrush ? 'fill-orange-800 font-extrabold' : 'fill-orange-700 font-bold';
-  } else if (isHighlighted) {
-    edgeLabelClass = 'fill-slate-800 font-bold';
+  } else if (routeActive) {
+    if (isPrimary) {
+      edgeLabelClass = 'fill-emerald-800 font-bold';
+    } else if (isBackup) {
+      edgeLabelClass = 'fill-amber-800 font-bold';
+    }
   }
 
   return (
@@ -90,7 +120,7 @@ export default function MapEdge({
         strokeLinecap="round"
         opacity={hazard === 'smoke' ? 0.65 : 1}
         className={
-          !hazard && !isHighlighted
+          !hazard && !routeActive
             ? 'group-hover:stroke-slate-400 transition-all'
             : ''
         }
@@ -100,6 +130,9 @@ export default function MapEdge({
         y={midY - 1.3}
         fontSize="2.1"
         textAnchor="middle"
+        paintOrder="stroke"
+        stroke="#ffffff"
+        strokeWidth="0.5"
         className={`pointer-events-none select-none font-mono ${edgeLabelClass}`}
       >
         {edgeLabel}

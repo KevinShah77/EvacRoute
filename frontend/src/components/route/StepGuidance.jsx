@@ -10,11 +10,21 @@ export default function StepGuidance() {
     displayedRoute,
     setActiveFloor,
     setRouteView,
+    setRouteSelection,
   } = useEvacuation();
 
   const { simState, simStepIndex, resetSimulationPlayback } = useSimulation();
 
   if (!displayedRoute || displayedRoute.distance < 0) return null;
+
+  const handleSelectRoute = (targetView) => {
+    resetSimulationPlayback();
+    if (typeof setRouteSelection === 'function') {
+      setRouteSelection(targetView);
+    } else if (typeof setRouteView === 'function') {
+      setRouteView(targetView);
+    }
+  };
 
   return (
     <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -32,14 +42,19 @@ export default function StepGuidance() {
         </div>
         {route?.backup_route && routeView === 'primary' && (
           <button
-            onClick={() => {
-              resetSimulationPlayback();
-              setRouteView('backup');
-            }}
+            onClick={() => handleSelectRoute('backup')}
             className="text-xs font-semibold text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3 py-1.5 rounded-lg transition-colors"
           >
             Preview Backup via {route.backup_route.target_exit?.label} (
             {route.backup_route.distance}m) →
+          </button>
+        )}
+        {route?.backup_route && routeView === 'backup' && (
+          <button
+            onClick={() => handleSelectRoute('primary')}
+            className="text-xs font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-lg transition-colors"
+          >
+            ← View Primary via {route.target_exit?.label} ({route.distance}m)
           </button>
         )}
       </div>

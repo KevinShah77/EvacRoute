@@ -270,6 +270,9 @@ export default function LocationSearch() {
                       }`}
                       onClick={() => {
                         setStartLocation(node);
+                        if (node.floor) {
+                          setActiveFloor(node.floor);
+                        }
                         setIsOpen(false);
                       }}
                     >

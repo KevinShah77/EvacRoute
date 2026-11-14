@@ -76,19 +76,10 @@ export function EvacuationProvider({ children }) {
             }
             return selectionOverride;
           }
-          // Preserve active hazard brush mode so corridor editing is not interrupted
-          if (prev?.type === 'hazard') {
-            return prev;
-          }
           // Preserve backup route view if available
           if (prev?.type === 'route' && prev?.id === 'backup' && res.data?.backup_route) {
             setRouteView('backup');
             return prev;
-          }
-          // If default map view (cleared selection), preserve default
-          if (prev === null) {
-            setRouteView('primary');
-            return null;
           }
           setRouteView('primary');
           return { type: 'route', id: 'primary' };
@@ -160,16 +151,20 @@ export function EvacuationProvider({ children }) {
     try {
       await api.resetSimulation();
       setError(null);
+      setRoute(null);
+      setActiveSelection(null);
       await loadData(accessibleOnly);
-      showToast('All hazards cleared');
-      if (route) {
-        await calculateRoute(startNode, targetNode, accessibleOnly, false);
-      }
+      showToast('Simulation reset: all hazards and routes cleared');
     } catch (err) {
       console.error('Failed to reset simulation:', err);
       setError(err.message || 'Failed to reset simulation.');
     }
-  }, [loadData, accessibleOnly, showToast, route, calculateRoute, startNode, targetNode]);
+  }, [loadData, accessibleOnly, showToast]);
+
+  const clearRoute = useCallback(() => {
+    setRoute(null);
+    setActiveSelection(null);
+  }, []);
 
   const setStartLocation = useCallback(
     async (node) => {
@@ -214,7 +209,12 @@ export function EvacuationProvider({ children }) {
   }, []);
 
   const clearSelection = useCallback(() => {
-    setActiveSelection(null);
+    setActiveSelection((prev) => {
+      if (prev?.type === 'route') {
+        setRoute(null);
+      }
+      return null;
+    });
   }, []);
 
   // Derive floor list cleanly from graph data
@@ -246,6 +246,7 @@ export function EvacuationProvider({ children }) {
     setRouteSelection,
     setHazardSelection,
     clearSelection,
+    clearRoute,
     blueprintOpacity,
     setBlueprintOpacity,
     route,
