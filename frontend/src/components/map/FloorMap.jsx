@@ -183,11 +183,12 @@ export default function FloorMap() {
                 s.hazard
                   ? '#ea580c'
                   : activeSelection?.id === 'backup'
-                  ? '#d97706'
-                  : '#059669'
+                  ? '#fde68a'
+                  : '#a7f3d0'
               }
-              strokeWidth={1.4}
+              strokeWidth={1.1}
               strokeLinecap="round"
+              strokeLinejoin="round"
               className={`pointer-events-none ${
                 activeSelection?.id === 'backup' ? 'evac-flow-backup' : 'evac-flow-primary'
               }`}

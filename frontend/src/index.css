@@ -24,12 +24,12 @@
 }
 
 .evac-flow-primary {
-  stroke-dasharray: 3.5 2.5;
-  animation: evacDashFlow 0.7s linear infinite;
+  stroke-dasharray: 2.5 2.5;
+  animation: evacDashFlow 0.8s linear infinite;
 }
 
 .evac-flow-backup {
-  stroke-dasharray: 2.5 2;
+  stroke-dasharray: 2 2;
   animation: evacDashFlow 1.1s linear infinite;
 }
 

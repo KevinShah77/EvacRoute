@@ -8,13 +8,16 @@ import {
   Activity,
   CheckCircle2,
   XCircle,
+  Eye,
+  Map,
 } from 'lucide-react';
+import { FLOOR_MAP_IMAGES } from '../../constants/floorConfig';
 import * as api from '../../services/api';
 
 const NODE_COLORS = {
   classroom: '#0284c7', // Sky blue for reachable rooms
   unreachable_room: '#ef4444', // Red for blocked/unreachable rooms
-  corridor: '#64748b', // Slate for corridors
+  corridor: '#94a3b8', // Subtle slate for corridor waypoints
   staircase: '#f59e0b', // Amber for staircases
   elevator: '#9333ea', // Purple for elevators
   ramp: '#0d9488', // Teal for ramps
@@ -34,6 +37,7 @@ export default function FloorEvacuationGraph({
   const [selectedEntrance, setSelectedEntrance] = useState(
     initialGraphData?.selected_entrance?.id || 'GF-E-MAIN'
   );
+  const [blueprintOpacity, setBlueprintOpacity] = useState(0.85);
   const [graphData, setGraphData] = useState(initialGraphData);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -171,8 +175,8 @@ export default function FloorEvacuationGraph({
         )}
       </div>
 
-      {/* Selectors Bar: Floor Selector + Entrance Selector */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50 border border-slate-200/80 p-3.5 rounded-xl">
+      {/* Selectors Bar: Floor Selector + Entrance Selector + Blueprint Opacity */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 border border-slate-200/80 p-3.5 rounded-xl">
         {/* Floor Selection */}
         <div>
           <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5 flex items-center gap-1.5">
@@ -222,7 +226,35 @@ export default function FloorEvacuationGraph({
                   title={`${ent.label} (${ent.floor})`}
                 >
                   <DoorOpen size={13} />
-                  <span className="truncate max-w-[170px]">{ent.label}</span>
+                  <span className="truncate max-w-[150px]">{ent.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Blueprint Map Opacity Control */}
+        <div>
+          <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5 flex items-center gap-1.5">
+            <Map size={14} className="text-indigo-600" />
+            <span>Floor Blueprint Backdrop ({Math.round(blueprintOpacity * 100)}%)</span>
+          </label>
+          <div className="flex flex-wrap items-center gap-1.5">
+            {[0, 0.4, 0.85, 1.0].map((val) => {
+              const isSelected = blueprintOpacity === val;
+              return (
+                <button
+                  key={val}
+                  type="button"
+                  onClick={() => setBlueprintOpacity(val)}
+                  className={`px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${
+                    isSelected
+                      ? 'bg-indigo-600 text-white shadow-sm ring-2 ring-indigo-400/40'
+                      : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+                  }`}
+                >
+                  <Eye size={12} />
+                  <span>{val === 0 ? 'Off' : `${Math.round(val * 100)}%`}</span>
                 </button>
               );
             })}
@@ -322,13 +354,27 @@ export default function FloorEvacuationGraph({
 
         <div className="aspect-[4/3] max-h-[560px] w-full flex items-center justify-center">
           <svg viewBox="0 0 100 100" className="w-full h-full select-none">
+            {/* Architectural Floor Blueprint Image Backdrop */}
+            {blueprintOpacity > 0 && (
+              <image
+                href={FLOOR_MAP_IMAGES[selectedFloor] || '/maps/Floor-0.png'}
+                x="0"
+                y="0"
+                width="100"
+                height="100"
+                preserveAspectRatio="none"
+                opacity={blueprintOpacity}
+                className="pointer-events-none transition-opacity duration-300"
+              />
+            )}
+
             {/* Subtle graph coordinate grid lines */}
             <defs>
               <pattern id="graph-grid" width="10" height="10" patternUnits="userSpaceOnUse">
                 <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" strokeWidth="0.2" />
               </pattern>
             </defs>
-            <rect width="100" height="100" fill="url(#graph-grid)" />
+            <rect width="100" height="100" fill="url(#graph-grid)" opacity={blueprintOpacity > 0 ? 0.35 : 1} />
 
             {/* Connections / Edges */}
             {edges.map((edge, idx) => {
@@ -336,37 +382,52 @@ export default function FloorEvacuationGraph({
               const tgtNode = nodes.find((n) => n.id === edge.target);
               if (!srcNode || !tgtNode) return null;
 
+              // Don't draw cross-floor connectors across 2D blueprints of upper floors
+              if (
+                edge.is_vertical_connector &&
+                (srcNode.is_external || tgtNode.is_external || srcNode.floor !== tgtNode.floor)
+              ) {
+                return null;
+              }
+
               const isPathEdge = edge.is_evacuation_path;
               const isFocusedEdge =
                 focusedPathEdges.has(`${edge.source}--${edge.target}`) ||
                 focusedPathEdges.has(`${edge.target}--${edge.source}`);
 
-              let stroke = '#cbd5e1';
-              let strokeWidth = 0.6;
+              let stroke = '#94a3b8';
+              let strokeWidth = 0.45;
               let strokeDash = 'none';
+              let opacity = 0.45;
 
               if (edge.hazard === 'fire') {
                 stroke = '#ef4444';
                 strokeWidth = 1.3;
                 strokeDash = '2,1';
+                opacity = 1;
               } else if (edge.hazard === 'smoke') {
-                stroke = '#64748b';
-                strokeWidth = 2.0;
+                stroke = '#475569';
+                strokeWidth = 1.6;
                 strokeDash = '1.2,1';
+                opacity = 0.8;
               } else if (edge.hazard === 'debris') {
                 stroke = '#ea580c';
-                strokeWidth = 1.4;
+                strokeWidth = 1.3;
                 strokeDash = '1,1';
+                opacity = 1;
               } else if (isFocusedEdge) {
                 stroke = '#2563eb';
-                strokeWidth = 2.2;
+                strokeWidth = 1.75;
+                opacity = 1;
               } else if (isPathEdge) {
-                stroke = '#10b981';
-                strokeWidth = 1.35;
+                stroke = '#059669';
+                strokeWidth = 1.15;
+                opacity = 0.9;
               } else if (edge.is_vertical_connector) {
-                stroke = '#8b5cf6';
-                strokeWidth = 1.1;
+                stroke = '#9333ea';
+                strokeWidth = 0.9;
                 strokeDash = '2,1.5';
+                opacity = 0.7;
               }
 
               const midX = (srcNode.x + tgtNode.x) / 2;
@@ -383,28 +444,22 @@ export default function FloorEvacuationGraph({
                     strokeWidth={strokeWidth}
                     strokeDasharray={strokeDash}
                     strokeLinecap="round"
+                    strokeLinejoin="round"
+                    opacity={opacity}
                     className="transition-all"
                   />
                   {edge.hazard && (
                     <text
                       x={midX}
-                      y={midY - 1}
-                      fontSize="2.0"
+                      y={midY - 0.8}
+                      fontSize="1.6"
                       textAnchor="middle"
+                      paintOrder="stroke"
+                      stroke="#ffffff"
+                      strokeWidth="0.4"
                       className="fill-red-600 font-bold font-mono"
                     >
                       {edge.hazard.toUpperCase()}
-                    </text>
-                  )}
-                  {edge.is_vertical_connector && (
-                    <text
-                      x={midX}
-                      y={midY - 1}
-                      fontSize="1.8"
-                      textAnchor="middle"
-                      className="fill-purple-700 font-bold"
-                    >
-                      {edge.label || 'Vertical Transit'}
                     </text>
                   )}
                 </g>
@@ -413,7 +468,10 @@ export default function FloorEvacuationGraph({
 
             {/* Nodes */}
             {nodes.map((node) => {
+              if (node.is_external) return null;
+
               const isRoom = node.type === 'classroom' || node.type === 'room';
+              const isCorridor = node.type === 'corridor';
               const isTargetExit = node.id === selectedEntrance;
               const isFocused = node.id === focusedNodeId || focusedPathNodes.has(node.id);
 
@@ -422,7 +480,44 @@ export default function FloorEvacuationGraph({
                 fillColor = NODE_COLORS.unreachable_room;
               }
 
-              const radius = isTargetExit ? 3.4 : isRoom ? 2.3 : node.type === 'staircase' || node.type === 'elevator' ? 2.2 : 1.6;
+              const radius = isTargetExit
+                ? 1.9
+                : isRoom
+                ? (node.reachable ? 1.2 : 1.5)
+                : isCorridor
+                ? 0.55
+                : 1.3;
+
+              // Don't show labels on plain corridor waypoints
+              const showNodeLabel =
+                !isCorridor &&
+                (isRoom || isTargetExit || node.type === 'staircase' || node.type === 'elevator' || isFocused);
+
+              // Stagger label Y to prevent overlap between close rows
+              const isLowerRow = node.y > 64;
+              const isElevator = node.type === 'elevator';
+              const labelY = isLowerRow
+                ? node.y + radius + 1.9
+                : isElevator
+                ? node.y + radius + 2.0
+                : node.y - (radius + 0.8);
+
+              // Stagger X anchor for closely spaced nodes in central south corridor
+              let textAnchor = 'middle';
+              let labelX = node.x;
+              if (node.id === 'GF-008') {
+                textAnchor = 'end';
+                labelX = node.x - 0.8;
+              } else if (node.id === 'GF-009') {
+                textAnchor = 'start';
+                labelX = node.x + 0.8;
+              }
+
+              const displayLabel = isTargetExit
+                ? `EXIT: ${node.label.replace(/\(.*\)/, '').trim()}`
+                : isRoom && !node.reachable
+                ? `⚠ ${node.label}`
+                : node.label;
 
               return (
                 <g
@@ -435,15 +530,15 @@ export default function FloorEvacuationGraph({
                   <title>{`${node.label} (${node.floor})\nType: ${node.type}\nStatus: ${node.reachable ? 'Reachable' : 'Unreachable / Blocked'}${node.distance ? `\nDistance: ${node.distance}m (${node.formatted_time})` : ''}`}</title>
 
                   {/* Highlight ring if focused or target exit */}
-                  {(isFocused || isTargetExit) && (
+                  {(isFocused || isTargetExit || (isRoom && !node.reachable)) && (
                     <circle
                       cx={node.x}
                       cy={node.y}
-                      r={radius + 1.6}
+                      r={radius + 1.2}
                       fill="none"
                       stroke={isTargetExit ? '#16a34a' : isRoom && !node.reachable ? '#ef4444' : '#2563eb'}
-                      strokeWidth="0.6"
-                      strokeDasharray={isTargetExit ? '1.5,1' : 'none'}
+                      strokeWidth="0.5"
+                      strokeDasharray={isTargetExit ? '1.2,1' : isRoom && !node.reachable ? '1,0.8' : 'none'}
                       className={isTargetExit ? 'animate-pulse' : ''}
                     />
                   )}
@@ -455,16 +550,17 @@ export default function FloorEvacuationGraph({
                     r={radius}
                     fill={fillColor}
                     stroke="#ffffff"
-                    strokeWidth="0.5"
+                    strokeWidth={isCorridor ? '0.2' : '0.4'}
+                    opacity={isCorridor ? 0.6 : 1}
                   />
 
-                  {/* Node Label */}
-                  {(isRoom || isTargetExit || node.type === 'staircase' || node.type === 'elevator' || isFocused) && (
+                  {/* Node Label with contrast halo */}
+                  {showNodeLabel && (
                     <text
-                      x={node.x}
-                      y={node.y - (radius + 1.2)}
-                      fontSize={isTargetExit ? '2.4' : isRoom ? '2.0' : '1.8'}
-                      textAnchor="middle"
+                      x={labelX}
+                      y={labelY}
+                      fontSize={isTargetExit ? '1.8' : isRoom && !node.reachable ? '1.7' : isRoom ? '1.6' : '1.5'}
+                      textAnchor={textAnchor}
                       paintOrder="stroke"
                       stroke="#ffffff"
                       strokeWidth="0.6"
@@ -478,7 +574,7 @@ export default function FloorEvacuationGraph({
                           : 'fill-slate-700'
                       }`}
                     >
-                      {isTargetExit ? `EXIT: ${node.label}` : node.label}
+                      {displayLabel}
                     </text>
                   )}
                 </g>

@@ -20,9 +20,16 @@ export default function MapNode({
     isRouteActive ??
     Boolean(isRouteSelected);
 
+  const isCorridor = node.type === 'corridor';
+
   // When an evacuation route is active:
   // Hide all unselected dots (room/corridor nodes).
-  // Exception: keep start location, primary route nodes, backup route nodes, and hazard nodes.
+  // Plain corridor waypoints are hidden so the clean route polyline bends naturally without obscuring dots.
+  // Exception: keep start location, primary/backup endpoints (rooms/exits/stairs), and hazard nodes.
+  if (routeActive && !isStart && !isHazardNode && isCorridor) {
+    return null;
+  }
+
   if (routeActive && !isStart && !onPrimaryPath && !onBackupPath && !isHazardNode) {
     return null;
   }
@@ -40,33 +47,40 @@ export default function MapNode({
 
   const showLabel =
     isStart ||
-    onDisplayedPath ||
-    onPrimaryPath ||
-    onBackupPath ||
     isHazardNode ||
     node.type === 'exit' ||
     node.type === 'staircase' ||
     node.type === 'elevator' ||
-    node.type === 'classroom';
+    node.type === 'classroom' ||
+    (!isCorridor && (onDisplayedPath || onPrimaryPath || onBackupPath));
 
   let nodeStroke = '#ffffff';
-  let nodeStrokeWidth = '0.4';
+  let nodeStrokeWidth = '0.35';
 
   if (isStart) {
     nodeStroke = '#1d4ed8';
-    nodeStrokeWidth = '0.9';
+    nodeStrokeWidth = '0.7';
   } else if (isHazardNode) {
     nodeStroke = '#ef4444';
-    nodeStrokeWidth = '0.9';
+    nodeStrokeWidth = '0.7';
   } else if (routeActive) {
     if (onPrimaryPath) {
       nodeStroke = activeSelection?.id === 'backup' ? '#059669' : '#10b981';
-      nodeStrokeWidth = '0.9';
+      nodeStrokeWidth = '0.7';
     } else if (onBackupPath) {
       nodeStroke = '#d97706';
-      nodeStrokeWidth = '0.9';
+      nodeStrokeWidth = '0.7';
     }
   }
+
+  const radius =
+    node.type === 'exit' || isStart
+      ? 1.8
+      : node.type === 'staircase' || node.type === 'elevator' || node.type === 'ramp'
+      ? 1.4
+      : isCorridor
+      ? 0.7
+      : 1.3;
 
   return (
     <g
@@ -78,10 +92,10 @@ export default function MapNode({
       <circle
         cx={node.x}
         cy={node.y}
-        r="3.8"
+        r="2.6"
         fill="transparent"
         stroke="#94a3b8"
-        strokeWidth="0.4"
+        strokeWidth="0.3"
         className="opacity-0 group-hover:opacity-100 transition-opacity"
       />
 
@@ -89,43 +103,43 @@ export default function MapNode({
         <circle
           cx={node.x}
           cy={node.y}
-          r="4.1"
+          r="2.7"
           fill="none"
           stroke="#2563eb"
-          strokeWidth="0.7"
-          strokeDasharray="1.2,1"
+          strokeWidth="0.5"
+          strokeDasharray="1,0.8"
         />
       )}
 
       <circle
         cx={node.x}
         cy={node.y}
-        r={node.type === 'exit' || isStart ? '2.5' : '2'}
+        r={radius}
         fill={fill}
         stroke={nodeStroke}
         strokeWidth={nodeStrokeWidth}
       />
 
-      <text
-        x={node.x}
-        y={node.y - 3.6}
-        fontSize="2.4"
-        textAnchor="middle"
-        paintOrder="stroke"
-        stroke="#ffffff"
-        strokeWidth="0.7"
-        className={`pointer-events-none select-none font-semibold ${
-          isStart
-            ? 'fill-blue-700'
-            : node.type === 'exit'
-            ? 'fill-green-700'
-            : showLabel
-            ? 'fill-slate-800'
-            : 'fill-slate-700 opacity-0 group-hover:opacity-100'
-        }`}
-      >
-        {isStart ? `START: ${node.label}` : node.label}
-      </text>
+      {showLabel && (
+        <text
+          x={node.x}
+          y={node.y - (radius + 0.9)}
+          fontSize={isStart || node.type === 'exit' ? '1.9' : '1.7'}
+          textAnchor="middle"
+          paintOrder="stroke"
+          stroke="#ffffff"
+          strokeWidth="0.5"
+          className={`pointer-events-none select-none font-semibold ${
+            isStart
+              ? 'fill-blue-700 font-bold'
+              : node.type === 'exit'
+              ? 'fill-green-700 font-bold'
+              : 'fill-slate-800'
+          }`}
+        >
+          {isStart ? `START: ${node.label}` : node.label}
+        </text>
+      )}
 
       {transitionInfo && (
         <g
@@ -136,19 +150,19 @@ export default function MapNode({
           }}
         >
           <rect
-            x={node.x - 11.5}
-            y={node.y + 3.1}
-            width="23"
-            height="4.4"
-            rx="1.2"
+            x={node.x - 7.5}
+            y={node.y + 1.8}
+            width="15"
+            height="3.0"
+            rx="0.8"
             fill={transitionInfo.kind === 'outgoing' ? '#1d4ed8' : '#e2e8f0'}
             stroke={transitionInfo.kind === 'outgoing' ? '#1e40af' : '#94a3b8'}
             strokeWidth="0.25"
           />
           <text
             x={node.x}
-            y={node.y + 6.0}
-            fontSize="2.0"
+            y={node.y + 3.8}
+            fontSize="1.4"
             textAnchor="middle"
             className={`select-none font-bold ${
               transitionInfo.kind === 'outgoing' ? 'fill-white' : 'fill-slate-700'

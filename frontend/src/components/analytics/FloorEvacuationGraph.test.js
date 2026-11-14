@@ -140,4 +140,54 @@ describe('FloorEvacuationGraph Component', () => {
     expect(screen.getAllByText('Lecture Hall (201)').length).toBeGreaterThan(0);
     expect(screen.getAllByText('Lab (202)').length).toBeGreaterThan(0);
   });
+
+  test('renders floor blueprint map image and opacity controls', () => {
+    const { container } = render(<FloorEvacuationGraph initialGraphData={mockGraphData} />);
+
+    // Check blueprint image in SVG
+    const img = container.querySelector('svg image');
+    expect(img).toBeInTheDocument();
+    expect(img).toHaveAttribute('href', '/maps/Floor-2.png');
+    expect(img).toHaveAttribute('opacity', '0.85');
+
+    // Check opacity control buttons
+    const offBtn = screen.getByRole('button', { name: /Off/i });
+    expect(offBtn).toBeInTheDocument();
+
+    fireEvent.click(offBtn);
+    // When opacity is 0, image should be hidden
+    expect(container.querySelector('svg image')).toBeNull();
+
+    const fullBtn = screen.getByRole('button', { name: /100%/i });
+    fireEvent.click(fullBtn);
+    const updatedImg = container.querySelector('svg image');
+    expect(updatedImg).toBeInTheDocument();
+    expect(updatedImg).toHaveAttribute('opacity', '1');
+  });
+
+  test('renders unreachable room with warning badge and distinct styling', () => {
+    const unreachableGraphData = {
+      ...mockGraphData,
+      summary: {
+        ...mockGraphData.summary,
+        reachable_rooms: 1,
+        unreachable_rooms: 1,
+        reachable_percent: 50,
+      },
+      nodes: [
+        ...mockGraphData.nodes.filter((n) => n.id !== 'F2-202'),
+        { id: 'F2-202', label: 'Lab (202)', floor: 'Floor 2', type: 'classroom', x: 40, y: 30, reachable: false },
+      ],
+      rooms: [
+        mockGraphData.rooms[0],
+        { ...mockGraphData.rooms[1], reachable: false, distance: -1, formatted_time: 'Trapped / Blocked' },
+      ],
+    };
+
+    render(<FloorEvacuationGraph initialGraphData={unreachableGraphData} />);
+
+    expect(screen.getByText('1 Room(s) Unreachable!')).toBeInTheDocument();
+    expect(screen.getByText('⚠ Lab (202)')).toBeInTheDocument();
+    expect(screen.getByText('Blocked / Trapped')).toBeInTheDocument();
+  });
 });

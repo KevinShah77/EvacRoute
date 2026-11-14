@@ -82,42 +82,6 @@
             "y": 61.5
         },
         {
-            "id": "GF-C-NORTH",
-            "floor": "Ground",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Ground North Corridor",
-            "x": 36,
-            "y": 28
-        },
-        {
-            "id": "GF-C-EAST",
-            "floor": "Ground",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Ground East Corridor",
-            "x": 66,
-            "y": 50
-        },
-        {
-            "id": "GF-C-SOUTH",
-            "floor": "Ground",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Ground South Corridor",
-            "x": 47,
-            "y": 62
-        },
-        {
-            "id": "GF-C-WEST",
-            "floor": "Ground",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Ground West Corridor",
-            "x": 27,
-            "y": 55
-        },
-        {
             "id": "GF-001",
             "floor": "Ground",
             "type": "classroom",
@@ -253,42 +217,6 @@
             "y": 61.5
         },
         {
-            "id": "F1-C-NORTH",
-            "floor": "Floor 1",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 1 North Corridor",
-            "x": 36,
-            "y": 28
-        },
-        {
-            "id": "F1-C-EAST",
-            "floor": "Floor 1",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 1 East Corridor",
-            "x": 66,
-            "y": 50
-        },
-        {
-            "id": "F1-C-SOUTH",
-            "floor": "Floor 1",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 1 South Corridor",
-            "x": 47,
-            "y": 62
-        },
-        {
-            "id": "F1-C-WEST",
-            "floor": "Floor 1",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 1 West Corridor",
-            "x": 27,
-            "y": 55
-        },
-        {
             "id": "F1-113",
             "floor": "Floor 1",
             "type": "classroom",
@@ -413,42 +341,6 @@
             "label": "Floor 2 South-East Stairs",
             "x": 68.5,
             "y": 61.5
-        },
-        {
-            "id": "F2-C-NORTH",
-            "floor": "Floor 2",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 2 North Corridor",
-            "x": 36,
-            "y": 28
-        },
-        {
-            "id": "F2-C-EAST",
-            "floor": "Floor 2",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 2 East Corridor",
-            "x": 66,
-            "y": 50
-        },
-        {
-            "id": "F2-C-SOUTH",
-            "floor": "Floor 2",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 2 South Corridor",
-            "x": 47,
-            "y": 62
-        },
-        {
-            "id": "F2-C-WEST",
-            "floor": "Floor 2",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 2 West Corridor",
-            "x": 27,
-            "y": 55
         },
         {
             "id": "F2-201",
@@ -586,42 +478,6 @@
             "y": 61.5
         },
         {
-            "id": "F3-C-NORTH",
-            "floor": "Floor 3",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 3 North Corridor",
-            "x": 36,
-            "y": 28
-        },
-        {
-            "id": "F3-C-EAST",
-            "floor": "Floor 3",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 3 East Corridor",
-            "x": 66,
-            "y": 50
-        },
-        {
-            "id": "F3-C-SOUTH",
-            "floor": "Floor 3",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 3 South Corridor",
-            "x": 47,
-            "y": 62
-        },
-        {
-            "id": "F3-C-WEST",
-            "floor": "Floor 3",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 3 West Corridor",
-            "x": 27,
-            "y": 55
-        },
-        {
             "id": "F3-313",
             "floor": "Floor 3",
             "type": "classroom",
@@ -739,42 +595,6 @@
             "y": 61.5
         },
         {
-            "id": "F4-C-NORTH",
-            "floor": "Floor 4",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 4 North Corridor",
-            "x": 36,
-            "y": 28
-        },
-        {
-            "id": "F4-C-EAST",
-            "floor": "Floor 4",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 4 East Corridor",
-            "x": 66,
-            "y": 50
-        },
-        {
-            "id": "F4-C-SOUTH",
-            "floor": "Floor 4",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 4 South Corridor",
-            "x": 47,
-            "y": 62
-        },
-        {
-            "id": "F4-C-WEST",
-            "floor": "Floor 4",
-            "type": "corridor",
-            "accessible": true,
-            "label": "Floor 4 West Corridor",
-            "x": 27,
-            "y": 55
-        },
-        {
             "id": "F4-414",
             "floor": "Floor 4",
             "type": "classroom",
@@ -854,584 +674,1343 @@
             "label": "Greenhouse Farming (437)",
             "x": 26,
             "y": 75
+        },
+        {
+            "id": "GF-C-NORTH",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground North Corridor",
+            "x": 48.0,
+            "y": 18.0
+        },
+        {
+            "id": "GF-C-EAST",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground East Corridor",
+            "x": 70.5,
+            "y": 42.0
+        },
+        {
+            "id": "GF-C-SOUTH",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground South Corridor",
+            "x": 48.0,
+            "y": 62.8
+        },
+        {
+            "id": "GF-C-WEST",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground West Corridor",
+            "x": 25.5,
+            "y": 45.0
+        },
+        {
+            "id": "GF-C-NW-1",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground NW Corridor (N)",
+            "x": 33.0,
+            "y": 18.0
+        },
+        {
+            "id": "GF-C-NW-2",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground NW Corridor (W)",
+            "x": 25.5,
+            "y": 25.5
+        },
+        {
+            "id": "GF-C-NE-1",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground NE Corridor (N)",
+            "x": 63.5,
+            "y": 18.0
+        },
+        {
+            "id": "GF-C-NE-2",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground NE Corridor (E)",
+            "x": 70.5,
+            "y": 25.5
+        },
+        {
+            "id": "GF-C-SE-1",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground SE Corridor (E)",
+            "x": 70.5,
+            "y": 58.0
+        },
+        {
+            "id": "GF-C-SE-2",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground SE Corridor (S)",
+            "x": 64.0,
+            "y": 60.0
+        },
+        {
+            "id": "GF-C-SW-1",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground SW Corridor (S)",
+            "x": 31.5,
+            "y": 62.8
+        },
+        {
+            "id": "GF-C-SW-2",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground SW Corridor (W)",
+            "x": 25.5,
+            "y": 58.5
+        },
+        {
+            "id": "F1-C-NORTH",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 North Corridor",
+            "x": 48.0,
+            "y": 18.0
+        },
+        {
+            "id": "F1-C-EAST",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 East Corridor",
+            "x": 70.5,
+            "y": 42.0
+        },
+        {
+            "id": "F1-C-SOUTH",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 South Corridor",
+            "x": 48.0,
+            "y": 67.5
+        },
+        {
+            "id": "F1-C-WEST",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 West Corridor",
+            "x": 23.0,
+            "y": 45.0
+        },
+        {
+            "id": "F1-C-NW-1",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 NW Corridor (N)",
+            "x": 33.0,
+            "y": 18.0
+        },
+        {
+            "id": "F1-C-NW-2",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 NW Corridor (W)",
+            "x": 23.0,
+            "y": 25.5
+        },
+        {
+            "id": "F1-C-NE-1",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 NE Corridor (N)",
+            "x": 63.5,
+            "y": 18.0
+        },
+        {
+            "id": "F1-C-NE-2",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 NE Corridor (E)",
+            "x": 70.5,
+            "y": 25.5
+        },
+        {
+            "id": "F1-C-SE-1",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 SE Corridor (E)",
+            "x": 70.5,
+            "y": 58.0
+        },
+        {
+            "id": "F1-C-SE-2",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 SE Corridor (S)",
+            "x": 64.0,
+            "y": 65.0
+        },
+        {
+            "id": "F1-C-SW-1",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 SW Corridor (S)",
+            "x": 31.5,
+            "y": 67.5
+        },
+        {
+            "id": "F1-C-SW-2",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 SW Corridor (W)",
+            "x": 23.0,
+            "y": 62.5
+        },
+        {
+            "id": "F2-C-NORTH",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 North Corridor",
+            "x": 48.0,
+            "y": 18.0
+        },
+        {
+            "id": "F2-C-EAST",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 East Corridor",
+            "x": 70.5,
+            "y": 42.0
+        },
+        {
+            "id": "F2-C-SOUTH",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 South Corridor",
+            "x": 48.0,
+            "y": 66.2
+        },
+        {
+            "id": "F2-C-WEST",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 West Corridor",
+            "x": 25.5,
+            "y": 45.0
+        },
+        {
+            "id": "F2-C-NW-1",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 NW Corridor (N)",
+            "x": 33.0,
+            "y": 18.0
+        },
+        {
+            "id": "F2-C-NW-2",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 NW Corridor (W)",
+            "x": 25.5,
+            "y": 25.5
+        },
+        {
+            "id": "F2-C-NE-1",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 NE Corridor (N)",
+            "x": 63.5,
+            "y": 18.0
+        },
+        {
+            "id": "F2-C-NE-2",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 NE Corridor (E)",
+            "x": 70.5,
+            "y": 25.5
+        },
+        {
+            "id": "F2-C-SE-1",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 SE Corridor (E)",
+            "x": 70.5,
+            "y": 58.0
+        },
+        {
+            "id": "F2-C-SE-2",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 SE Corridor (S)",
+            "x": 64.0,
+            "y": 64.8
+        },
+        {
+            "id": "F2-C-SW-1",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 SW Corridor (S)",
+            "x": 31.5,
+            "y": 66.2
+        },
+        {
+            "id": "F2-C-SW-2",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 SW Corridor (W)",
+            "x": 25.5,
+            "y": 62.5
+        },
+        {
+            "id": "F3-C-NORTH",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 North Corridor",
+            "x": 48.0,
+            "y": 18.0
+        },
+        {
+            "id": "F3-C-EAST",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 East Corridor",
+            "x": 70.5,
+            "y": 42.0
+        },
+        {
+            "id": "F3-C-SOUTH",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 South Corridor",
+            "x": 48.0,
+            "y": 67.5
+        },
+        {
+            "id": "F3-C-WEST",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 West Corridor",
+            "x": 23.0,
+            "y": 45.0
+        },
+        {
+            "id": "F3-C-NW-1",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 NW Corridor (N)",
+            "x": 33.0,
+            "y": 18.0
+        },
+        {
+            "id": "F3-C-NW-2",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 NW Corridor (W)",
+            "x": 23.0,
+            "y": 25.5
+        },
+        {
+            "id": "F3-C-NE-1",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 NE Corridor (N)",
+            "x": 63.5,
+            "y": 18.0
+        },
+        {
+            "id": "F3-C-NE-2",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 NE Corridor (E)",
+            "x": 70.5,
+            "y": 25.5
+        },
+        {
+            "id": "F3-C-SE-1",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 SE Corridor (E)",
+            "x": 70.5,
+            "y": 58.0
+        },
+        {
+            "id": "F3-C-SE-2",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 SE Corridor (S)",
+            "x": 64.0,
+            "y": 65.0
+        },
+        {
+            "id": "F3-C-SW-1",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 SW Corridor (S)",
+            "x": 31.5,
+            "y": 67.5
+        },
+        {
+            "id": "F3-C-SW-2",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 SW Corridor (W)",
+            "x": 23.0,
+            "y": 62.5
+        },
+        {
+            "id": "F4-C-NORTH",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 North Corridor",
+            "x": 48.0,
+            "y": 18.0
+        },
+        {
+            "id": "F4-C-EAST",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 East Corridor",
+            "x": 70.5,
+            "y": 42.0
+        },
+        {
+            "id": "F4-C-SOUTH",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 South Corridor",
+            "x": 48.0,
+            "y": 67.5
+        },
+        {
+            "id": "F4-C-WEST",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 West Corridor",
+            "x": 23.0,
+            "y": 45.0
+        },
+        {
+            "id": "F4-C-NW-1",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 NW Corridor (N)",
+            "x": 33.0,
+            "y": 18.0
+        },
+        {
+            "id": "F4-C-NW-2",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 NW Corridor (W)",
+            "x": 23.0,
+            "y": 25.5
+        },
+        {
+            "id": "F4-C-NE-1",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 NE Corridor (N)",
+            "x": 63.5,
+            "y": 18.0
+        },
+        {
+            "id": "F4-C-NE-2",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 NE Corridor (E)",
+            "x": 70.5,
+            "y": 25.5
+        },
+        {
+            "id": "F4-C-SE-1",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 SE Corridor (E)",
+            "x": 70.5,
+            "y": 58.0
+        },
+        {
+            "id": "F4-C-SE-2",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 SE Corridor (S)",
+            "x": 64.0,
+            "y": 67.5
+        },
+        {
+            "id": "F4-C-SW-1",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 SW Corridor (S)",
+            "x": 31.5,
+            "y": 67.5
+        },
+        {
+            "id": "F4-C-SW-2",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 SW Corridor (W)",
+            "x": 23.0,
+            "y": 62.5
         }
     ],
     "edges": [
         {
-            "source": "GF-C-WEST",
-            "target": "GF-E-WEST",
-            "weight": 11,
-            "is_stairs": false
+            "source": "GF-C-NORTH",
+            "target": "GF-C-NE-1",
+            "weight": 15.5
         },
         {
-            "source": "GF-C-NORTH",
-            "target": "GF-E-NORTH",
-            "weight": 22,
-            "is_stairs": false
+            "source": "GF-C-NE-1",
+            "target": "GF-C-NE-2",
+            "weight": 10.5
+        },
+        {
+            "source": "GF-C-NE-2",
+            "target": "GF-C-EAST",
+            "weight": 16.5
+        },
+        {
+            "source": "GF-C-EAST",
+            "target": "GF-C-SE-1",
+            "weight": 16.0
+        },
+        {
+            "source": "GF-C-SE-1",
+            "target": "GF-C-SE-2",
+            "weight": 7.0
+        },
+        {
+            "source": "GF-C-SE-2",
+            "target": "GF-C-SOUTH",
+            "weight": 16.0
         },
         {
             "source": "GF-C-SOUTH",
-            "target": "GF-RAMP",
-            "weight": 26,
-            "is_stairs": false
+            "target": "GF-C-SW-1",
+            "weight": 16.5
+        },
+        {
+            "source": "GF-C-SW-1",
+            "target": "GF-C-SW-2",
+            "weight": 7.5
+        },
+        {
+            "source": "GF-C-SW-2",
+            "target": "GF-C-WEST",
+            "weight": 13.5
+        },
+        {
+            "source": "GF-C-WEST",
+            "target": "GF-C-NW-2",
+            "weight": 19.5
+        },
+        {
+            "source": "GF-C-NW-2",
+            "target": "GF-C-NW-1",
+            "weight": 10.5
+        },
+        {
+            "source": "GF-C-NW-1",
+            "target": "GF-C-NORTH",
+            "weight": 15.0
+        },
+        {
+            "source": "GF-S-NW",
+            "target": "GF-C-NW-1",
+            "weight": 8.0
+        },
+        {
+            "source": "GF-S-NW",
+            "target": "GF-C-NW-2",
+            "weight": 8.0
+        },
+        {
+            "source": "GF-S-NE",
+            "target": "GF-C-NE-1",
+            "weight": 5.0
+        },
+        {
+            "source": "GF-S-NE",
+            "target": "GF-C-NE-2",
+            "weight": 6.0
+        },
+        {
+            "source": "GF-S-SW",
+            "target": "GF-C-WEST",
+            "weight": 3.0
+        },
+        {
+            "source": "GF-S-SE",
+            "target": "GF-C-SE-1",
+            "weight": 4.0
+        },
+        {
+            "source": "GF-S-SE",
+            "target": "GF-C-SE-2",
+            "weight": 5.0
+        },
+        {
+            "source": "GF-LIFT-S",
+            "target": "GF-C-SOUTH",
+            "weight": 10.0
+        },
+        {
+            "source": "F1-C-NORTH",
+            "target": "F1-C-NE-1",
+            "weight": 15.5
+        },
+        {
+            "source": "F1-C-NE-1",
+            "target": "F1-C-NE-2",
+            "weight": 10.5
+        },
+        {
+            "source": "F1-C-NE-2",
+            "target": "F1-C-EAST",
+            "weight": 16.5
+        },
+        {
+            "source": "F1-C-EAST",
+            "target": "F1-C-SE-1",
+            "weight": 16.0
+        },
+        {
+            "source": "F1-C-SE-1",
+            "target": "F1-C-SE-2",
+            "weight": 11.5
+        },
+        {
+            "source": "F1-C-SE-2",
+            "target": "F1-C-SOUTH",
+            "weight": 16.0
+        },
+        {
+            "source": "F1-C-SOUTH",
+            "target": "F1-C-SW-1",
+            "weight": 16.5
+        },
+        {
+            "source": "F1-C-SW-1",
+            "target": "F1-C-SW-2",
+            "weight": 8.0
+        },
+        {
+            "source": "F1-C-SW-2",
+            "target": "F1-C-WEST",
+            "weight": 17.5
+        },
+        {
+            "source": "F1-C-WEST",
+            "target": "F1-C-NW-2",
+            "weight": 19.5
+        },
+        {
+            "source": "F1-C-NW-2",
+            "target": "F1-C-NW-1",
+            "weight": 10.5
+        },
+        {
+            "source": "F1-C-NW-1",
+            "target": "F1-C-NORTH",
+            "weight": 15.0
+        },
+        {
+            "source": "F1-S-NW",
+            "target": "F1-C-NW-1",
+            "weight": 8.0
+        },
+        {
+            "source": "F1-S-NW",
+            "target": "F1-C-NW-2",
+            "weight": 8.0
+        },
+        {
+            "source": "F1-S-NE",
+            "target": "F1-C-NE-1",
+            "weight": 5.0
+        },
+        {
+            "source": "F1-S-NE",
+            "target": "F1-C-NE-2",
+            "weight": 6.0
+        },
+        {
+            "source": "F1-S-SW",
+            "target": "F1-C-WEST",
+            "weight": 3.0
+        },
+        {
+            "source": "F1-S-SE",
+            "target": "F1-C-SE-1",
+            "weight": 4.0
+        },
+        {
+            "source": "F1-S-SE",
+            "target": "F1-C-SE-2",
+            "weight": 7.0
+        },
+        {
+            "source": "F1-LIFT-S",
+            "target": "F1-C-SOUTH",
+            "weight": 10.0
+        },
+        {
+            "source": "F2-C-NORTH",
+            "target": "F2-C-NE-1",
+            "weight": 15.5
+        },
+        {
+            "source": "F2-C-NE-1",
+            "target": "F2-C-NE-2",
+            "weight": 10.5
+        },
+        {
+            "source": "F2-C-NE-2",
+            "target": "F2-C-EAST",
+            "weight": 16.5
+        },
+        {
+            "source": "F2-C-EAST",
+            "target": "F2-C-SE-1",
+            "weight": 16.0
+        },
+        {
+            "source": "F2-C-SE-1",
+            "target": "F2-C-SE-2",
+            "weight": 11.5
+        },
+        {
+            "source": "F2-C-SE-2",
+            "target": "F2-C-SOUTH",
+            "weight": 16.0
+        },
+        {
+            "source": "F2-C-SOUTH",
+            "target": "F2-C-SW-1",
+            "weight": 16.5
+        },
+        {
+            "source": "F2-C-SW-1",
+            "target": "F2-C-SW-2",
+            "weight": 8.0
+        },
+        {
+            "source": "F2-C-SW-2",
+            "target": "F2-C-WEST",
+            "weight": 17.5
+        },
+        {
+            "source": "F2-C-WEST",
+            "target": "F2-C-NW-2",
+            "weight": 19.5
+        },
+        {
+            "source": "F2-C-NW-2",
+            "target": "F2-C-NW-1",
+            "weight": 10.5
+        },
+        {
+            "source": "F2-C-NW-1",
+            "target": "F2-C-NORTH",
+            "weight": 15.0
+        },
+        {
+            "source": "F2-S-NW",
+            "target": "F2-C-NW-1",
+            "weight": 8.0
+        },
+        {
+            "source": "F2-S-NW",
+            "target": "F2-C-NW-2",
+            "weight": 8.0
+        },
+        {
+            "source": "F2-S-NE",
+            "target": "F2-C-NE-1",
+            "weight": 5.0
+        },
+        {
+            "source": "F2-S-NE",
+            "target": "F2-C-NE-2",
+            "weight": 6.0
+        },
+        {
+            "source": "F2-S-SW",
+            "target": "F2-C-WEST",
+            "weight": 3.0
+        },
+        {
+            "source": "F2-S-SE",
+            "target": "F2-C-SE-1",
+            "weight": 4.0
+        },
+        {
+            "source": "F2-S-SE",
+            "target": "F2-C-SE-2",
+            "weight": 7.0
+        },
+        {
+            "source": "F2-LIFT-S",
+            "target": "F2-C-SOUTH",
+            "weight": 10.0
+        },
+        {
+            "source": "F3-C-NORTH",
+            "target": "F3-C-NE-1",
+            "weight": 15.5
+        },
+        {
+            "source": "F3-C-NE-1",
+            "target": "F3-C-NE-2",
+            "weight": 10.5
+        },
+        {
+            "source": "F3-C-NE-2",
+            "target": "F3-C-EAST",
+            "weight": 16.5
+        },
+        {
+            "source": "F3-C-EAST",
+            "target": "F3-C-SE-1",
+            "weight": 16.0
+        },
+        {
+            "source": "F3-C-SE-1",
+            "target": "F3-C-SE-2",
+            "weight": 11.5
+        },
+        {
+            "source": "F3-C-SE-2",
+            "target": "F3-C-SOUTH",
+            "weight": 16.0
+        },
+        {
+            "source": "F3-C-SOUTH",
+            "target": "F3-C-SW-1",
+            "weight": 16.5
+        },
+        {
+            "source": "F3-C-SW-1",
+            "target": "F3-C-SW-2",
+            "weight": 8.0
+        },
+        {
+            "source": "F3-C-SW-2",
+            "target": "F3-C-WEST",
+            "weight": 17.5
+        },
+        {
+            "source": "F3-C-WEST",
+            "target": "F3-C-NW-2",
+            "weight": 19.5
+        },
+        {
+            "source": "F3-C-NW-2",
+            "target": "F3-C-NW-1",
+            "weight": 10.5
+        },
+        {
+            "source": "F3-C-NW-1",
+            "target": "F3-C-NORTH",
+            "weight": 15.0
+        },
+        {
+            "source": "F3-S-NW",
+            "target": "F3-C-NW-1",
+            "weight": 8.0
+        },
+        {
+            "source": "F3-S-NW",
+            "target": "F3-C-NW-2",
+            "weight": 8.0
+        },
+        {
+            "source": "F3-S-NE",
+            "target": "F3-C-NE-1",
+            "weight": 5.0
+        },
+        {
+            "source": "F3-S-NE",
+            "target": "F3-C-NE-2",
+            "weight": 6.0
+        },
+        {
+            "source": "F3-S-SW",
+            "target": "F3-C-WEST",
+            "weight": 3.0
+        },
+        {
+            "source": "F3-S-SE",
+            "target": "F3-C-SE-1",
+            "weight": 4.0
+        },
+        {
+            "source": "F3-S-SE",
+            "target": "F3-C-SE-2",
+            "weight": 7.0
+        },
+        {
+            "source": "F3-LIFT-S",
+            "target": "F3-C-SOUTH",
+            "weight": 10.0
+        },
+        {
+            "source": "F4-C-NORTH",
+            "target": "F4-C-NE-1",
+            "weight": 15.5
+        },
+        {
+            "source": "F4-C-NE-1",
+            "target": "F4-C-NE-2",
+            "weight": 10.5
+        },
+        {
+            "source": "F4-C-NE-2",
+            "target": "F4-C-EAST",
+            "weight": 16.5
+        },
+        {
+            "source": "F4-C-EAST",
+            "target": "F4-C-SE-1",
+            "weight": 16.0
+        },
+        {
+            "source": "F4-C-SE-1",
+            "target": "F4-C-SE-2",
+            "weight": 11.5
+        },
+        {
+            "source": "F4-C-SE-2",
+            "target": "F4-C-SOUTH",
+            "weight": 16.0
+        },
+        {
+            "source": "F4-C-SOUTH",
+            "target": "F4-C-SW-1",
+            "weight": 16.5
+        },
+        {
+            "source": "F4-C-SW-1",
+            "target": "F4-C-SW-2",
+            "weight": 8.0
+        },
+        {
+            "source": "F4-C-SW-2",
+            "target": "F4-C-WEST",
+            "weight": 17.5
+        },
+        {
+            "source": "F4-C-WEST",
+            "target": "F4-C-NW-2",
+            "weight": 19.5
+        },
+        {
+            "source": "F4-C-NW-2",
+            "target": "F4-C-NW-1",
+            "weight": 10.5
+        },
+        {
+            "source": "F4-C-NW-1",
+            "target": "F4-C-NORTH",
+            "weight": 15.0
+        },
+        {
+            "source": "F4-S-NW",
+            "target": "F4-C-NW-1",
+            "weight": 8.0
+        },
+        {
+            "source": "F4-S-NW",
+            "target": "F4-C-NW-2",
+            "weight": 8.0
+        },
+        {
+            "source": "F4-S-NE",
+            "target": "F4-C-NE-1",
+            "weight": 5.0
+        },
+        {
+            "source": "F4-S-NE",
+            "target": "F4-C-NE-2",
+            "weight": 6.0
+        },
+        {
+            "source": "F4-S-SW",
+            "target": "F4-C-WEST",
+            "weight": 3.0
+        },
+        {
+            "source": "F4-S-SE",
+            "target": "F4-C-SE-1",
+            "weight": 4.0
+        },
+        {
+            "source": "F4-S-SE",
+            "target": "F4-C-SE-2",
+            "weight": 7.0
+        },
+        {
+            "source": "F4-LIFT-S",
+            "target": "F4-C-SOUTH",
+            "weight": 10.0
+        },
+        {
+            "source": "GF-RAMP",
+            "target": "GF-C-SE-1",
+            "weight": 6.0
+        },
+        {
+            "source": "GF-RAMP",
+            "target": "GF-C-SE-2",
+            "weight": 9.0
         },
         {
             "source": "GF-RAMP",
             "target": "GF-E-MAIN",
-            "weight": 7,
-            "is_stairs": false
+            "weight": 7.0
         },
         {
             "source": "GF-S-SE",
             "target": "GF-E-MAIN",
-            "weight": 11,
-            "is_stairs": false
+            "weight": 11.0
         },
         {
-            "source": "GF-C-SOUTH",
-            "target": "GF-LIFT-S",
-            "weight": 5,
-            "is_stairs": false
+            "source": "GF-C-SE-1",
+            "target": "GF-E-MAIN",
+            "weight": 10.0
         },
         {
-            "source": "GF-C-NORTH",
-            "target": "GF-S-NW",
-            "weight": 12,
-            "is_stairs": false
+            "source": "GF-E-WEST",
+            "target": "GF-C-SW-2",
+            "weight": 5.0
         },
         {
-            "source": "GF-C-EAST",
-            "target": "GF-S-NE",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "GF-C-WEST",
-            "target": "GF-S-SW",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "GF-C-SOUTH",
-            "target": "GF-S-SE",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "GF-C-WEST",
-            "target": "GF-C-SOUTH",
-            "weight": 21,
-            "is_stairs": false
-        },
-        {
-            "source": "GF-C-SOUTH",
-            "target": "GF-C-EAST",
-            "weight": 22,
-            "is_stairs": false
-        },
-        {
-            "source": "GF-C-EAST",
-            "target": "GF-C-NORTH",
-            "weight": 36,
-            "is_stairs": false
-        },
-        {
-            "source": "GF-C-NORTH",
+            "source": "GF-E-WEST",
             "target": "GF-C-WEST",
-            "weight": 28,
-            "is_stairs": false
+            "weight": 18.0
+        },
+        {
+            "source": "GF-E-NORTH",
+            "target": "GF-C-NW-1",
+            "weight": 12.0
+        },
+        {
+            "source": "GF-E-NORTH",
+            "target": "GF-S-NW",
+            "weight": 8.0
         },
         {
             "source": "GF-001",
             "target": "GF-C-WEST",
-            "weight": 9,
-            "is_stairs": false
+            "weight": 9.0
         },
         {
             "source": "GF-002",
             "target": "GF-C-WEST",
-            "weight": 14,
-            "is_stairs": false
+            "weight": 11.0
         },
         {
             "source": "GF-003",
             "target": "GF-C-WEST",
-            "weight": 18,
-            "is_stairs": false
+            "weight": 12.0
         },
         {
             "source": "GF-004",
-            "target": "GF-C-NORTH",
-            "weight": 17,
-            "is_stairs": false
+            "target": "GF-C-NW-2",
+            "weight": 8.0
         },
         {
             "source": "GF-007",
             "target": "GF-C-WEST",
-            "weight": 10,
-            "is_stairs": false
+            "weight": 7.0
         },
         {
             "source": "GF-008",
             "target": "GF-C-SOUTH",
-            "weight": 8,
-            "is_stairs": false
+            "weight": 12.0
         },
         {
             "source": "GF-009",
             "target": "GF-C-SOUTH",
-            "weight": 8,
-            "is_stairs": false
+            "weight": 12.0
         },
         {
             "source": "GF-011",
-            "target": "GF-C-SOUTH",
-            "weight": 16,
-            "is_stairs": false
+            "target": "GF-C-SE-2",
+            "weight": 8.0
         },
         {
             "source": "GF-012",
             "target": "GF-C-SOUTH",
-            "weight": 10,
-            "is_stairs": false
+            "weight": 6.0
         },
         {
             "source": "GF-014",
-            "target": "GF-C-WEST",
-            "weight": 15,
-            "is_stairs": false
+            "target": "GF-C-SW-1",
+            "weight": 6.0
         },
         {
-            "source": "F1-C-SOUTH",
-            "target": "F1-LIFT-S",
-            "weight": 5,
-            "is_stairs": false
-        },
-        {
-            "source": "F1-C-NORTH",
-            "target": "F1-S-NW",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F1-C-EAST",
-            "target": "F1-S-NE",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F1-C-WEST",
-            "target": "F1-S-SW",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F1-C-SOUTH",
-            "target": "F1-S-SE",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F1-C-WEST",
-            "target": "F1-C-SOUTH",
-            "weight": 21,
-            "is_stairs": false
-        },
-        {
-            "source": "F1-C-SOUTH",
-            "target": "F1-C-EAST",
-            "weight": 22,
-            "is_stairs": false
-        },
-        {
-            "source": "F1-C-EAST",
-            "target": "F1-C-NORTH",
-            "weight": 36,
-            "is_stairs": false
-        },
-        {
-            "source": "F1-C-NORTH",
-            "target": "F1-C-WEST",
-            "weight": 28,
-            "is_stairs": false
+            "source": "F1-113",
+            "target": "F1-C-SW-2",
+            "weight": 10.0
         },
         {
             "source": "F1-113",
             "target": "F1-C-WEST",
-            "weight": 12,
-            "is_stairs": false
+            "weight": 15.0
         },
         {
             "source": "F1-114",
             "target": "F1-C-WEST",
-            "weight": 14,
-            "is_stairs": false
+            "weight": 13.0
         },
         {
             "source": "F1-115",
             "target": "F1-C-WEST",
-            "weight": 18,
-            "is_stairs": false
+            "weight": 12.0
         },
         {
             "source": "F1-116",
             "target": "F1-C-WEST",
-            "weight": 24,
-            "is_stairs": false
+            "weight": 11.0
         },
         {
             "source": "F1-118",
             "target": "F1-C-NORTH",
-            "weight": 21,
-            "is_stairs": false
+            "weight": 7.0
         },
         {
             "source": "F1-120",
-            "target": "F1-C-NORTH",
-            "weight": 40,
-            "is_stairs": false
+            "target": "F1-C-NE-2",
+            "weight": 9.0
         },
         {
             "source": "F1-122",
             "target": "F1-C-EAST",
-            "weight": 17,
-            "is_stairs": false
+            "weight": 12.0
         },
         {
             "source": "F1-124",
-            "target": "F1-C-SOUTH",
-            "weight": 18,
-            "is_stairs": false
+            "target": "F1-C-SE-2",
+            "weight": 8.0
         },
         {
             "source": "F1-125",
             "target": "F1-C-SOUTH",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F2-C-SOUTH",
-            "target": "F2-LIFT-S",
-            "weight": 5,
-            "is_stairs": false
-        },
-        {
-            "source": "F2-C-NORTH",
-            "target": "F2-S-NW",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F2-C-EAST",
-            "target": "F2-S-NE",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F2-C-WEST",
-            "target": "F2-S-SW",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F2-C-SOUTH",
-            "target": "F2-S-SE",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F2-C-WEST",
-            "target": "F2-C-SOUTH",
-            "weight": 21,
-            "is_stairs": false
-        },
-        {
-            "source": "F2-C-SOUTH",
-            "target": "F2-C-EAST",
-            "weight": 22,
-            "is_stairs": false
-        },
-        {
-            "source": "F2-C-EAST",
-            "target": "F2-C-NORTH",
-            "weight": 36,
-            "is_stairs": false
-        },
-        {
-            "source": "F2-C-NORTH",
-            "target": "F2-C-WEST",
-            "weight": 28,
-            "is_stairs": false
+            "weight": 6.0
         },
         {
             "source": "F2-201",
             "target": "F2-C-WEST",
-            "weight": 4,
-            "is_stairs": false
+            "weight": 4.0
         },
         {
             "source": "F2-214",
             "target": "F2-C-WEST",
-            "weight": 15,
-            "is_stairs": false
+            "weight": 13.0
         },
         {
             "source": "F2-215",
             "target": "F2-C-WEST",
-            "weight": 20,
-            "is_stairs": false
+            "weight": 12.0
+        },
+        {
+            "source": "F2-217",
+            "target": "F2-C-NW-1",
+            "weight": 8.0
         },
         {
             "source": "F2-217",
             "target": "F2-C-NORTH",
-            "weight": 17,
-            "is_stairs": false
+            "weight": 12.0
         },
         {
             "source": "F2-219",
             "target": "F2-C-NORTH",
-            "weight": 28,
-            "is_stairs": false
+            "weight": 10.0
         },
         {
             "source": "F2-220",
-            "target": "F2-C-EAST",
-            "weight": 36,
-            "is_stairs": false
+            "target": "F2-C-NE-2",
+            "weight": 11.0
         },
         {
             "source": "F2-222",
             "target": "F2-C-EAST",
-            "weight": 16,
-            "is_stairs": false
+            "weight": 9.0
+        },
+        {
+            "source": "F2-224",
+            "target": "F2-C-SE-2",
+            "weight": 9.0
         },
         {
             "source": "F2-224",
             "target": "F2-C-SOUTH",
-            "weight": 15,
-            "is_stairs": false
+            "weight": 11.0
         },
         {
             "source": "F2-225",
             "target": "F2-C-SOUTH",
-            "weight": 11,
-            "is_stairs": false
+            "weight": 6.0
         },
         {
             "source": "F2-227",
-            "target": "F2-C-WEST",
-            "weight": 18,
-            "is_stairs": false
+            "target": "F2-C-SW-1",
+            "weight": 6.0
         },
         {
-            "source": "F3-C-SOUTH",
-            "target": "F3-LIFT-S",
-            "weight": 5,
-            "is_stairs": false
-        },
-        {
-            "source": "F3-C-NORTH",
-            "target": "F3-S-NW",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F3-C-EAST",
-            "target": "F3-S-NE",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F3-C-WEST",
-            "target": "F3-S-SW",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F3-C-SOUTH",
-            "target": "F3-S-SE",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F3-C-WEST",
-            "target": "F3-C-SOUTH",
-            "weight": 21,
-            "is_stairs": false
-        },
-        {
-            "source": "F3-C-SOUTH",
-            "target": "F3-C-EAST",
-            "weight": 22,
-            "is_stairs": false
-        },
-        {
-            "source": "F3-C-EAST",
-            "target": "F3-C-NORTH",
-            "weight": 36,
-            "is_stairs": false
-        },
-        {
-            "source": "F3-C-NORTH",
-            "target": "F3-C-WEST",
-            "weight": 28,
-            "is_stairs": false
+            "source": "F3-313",
+            "target": "F3-C-SW-2",
+            "weight": 10.0
         },
         {
             "source": "F3-313",
             "target": "F3-C-WEST",
-            "weight": 12,
-            "is_stairs": false
+            "weight": 15.0
         },
         {
             "source": "F3-315",
             "target": "F3-C-WEST",
-            "weight": 18,
-            "is_stairs": false
+            "weight": 11.0
         },
         {
             "source": "F3-316",
             "target": "F3-C-WEST",
-            "weight": 24,
-            "is_stairs": false
+            "weight": 12.0
         },
         {
             "source": "F3-318",
             "target": "F3-C-NORTH",
-            "weight": 21,
-            "is_stairs": false
+            "weight": 8.0
         },
         {
             "source": "F3-320",
-            "target": "F3-C-EAST",
-            "weight": 36,
-            "is_stairs": false
+            "target": "F3-C-NE-2",
+            "weight": 9.0
         },
         {
             "source": "F3-323",
             "target": "F3-C-EAST",
-            "weight": 14,
-            "is_stairs": false
+            "weight": 10.0
         },
         {
             "source": "F3-325",
             "target": "F3-C-SOUTH",
-            "weight": 13,
-            "is_stairs": false
+            "weight": 8.0
         },
         {
             "source": "F3-327",
-            "target": "F3-C-WEST",
-            "weight": 19,
-            "is_stairs": false
-        },
-        {
-            "source": "F4-C-SOUTH",
-            "target": "F4-LIFT-S",
-            "weight": 5,
-            "is_stairs": false
-        },
-        {
-            "source": "F4-C-NORTH",
-            "target": "F4-S-NW",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F4-C-EAST",
-            "target": "F4-S-NE",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F4-C-WEST",
-            "target": "F4-S-SW",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F4-C-SOUTH",
-            "target": "F4-S-SE",
-            "weight": 12,
-            "is_stairs": false
-        },
-        {
-            "source": "F4-C-WEST",
-            "target": "F4-C-SOUTH",
-            "weight": 21,
-            "is_stairs": false
-        },
-        {
-            "source": "F4-C-SOUTH",
-            "target": "F4-C-EAST",
-            "weight": 22,
-            "is_stairs": false
-        },
-        {
-            "source": "F4-C-EAST",
-            "target": "F4-C-NORTH",
-            "weight": 36,
-            "is_stairs": false
-        },
-        {
-            "source": "F4-C-NORTH",
-            "target": "F4-C-WEST",
-            "weight": 28,
-            "is_stairs": false
+            "target": "F3-C-SW-1",
+            "weight": 7.0
         },
         {
             "source": "F4-414",
-            "target": "F4-C-WEST",
-            "weight": 12,
-            "is_stairs": false
+            "target": "F4-C-SW-2",
+            "weight": 11.0
         },
         {
             "source": "F4-416",
             "target": "F4-C-WEST",
-            "weight": 16,
-            "is_stairs": false
+            "weight": 13.0
         },
         {
             "source": "F4-420",
             "target": "F4-C-WEST",
-            "weight": 29,
-            "is_stairs": false
+            "weight": 12.0
         },
         {
             "source": "F4-423",
             "target": "F4-C-NORTH",
-            "weight": 21,
-            "is_stairs": false
+            "weight": 9.0
         },
         {
             "source": "F4-426",
             "target": "F4-C-EAST",
-            "weight": 23,
-            "is_stairs": false
+            "weight": 11.0
         },
         {
             "source": "F4-428",
             "target": "F4-C-EAST",
-            "weight": 17,
-            "is_stairs": false
+            "weight": 12.0
         },
         {
             "source": "F4-430",
-            "target": "F4-C-EAST",
-            "weight": 11,
-            "is_stairs": false
+            "target": "F4-C-SE-1",
+            "weight": 7.0
         },
         {
             "source": "F4-434",
             "target": "F4-C-SOUTH",
-            "weight": 13,
-            "is_stairs": false
+            "weight": 8.0
         },
         {
             "source": "F4-437",
-            "target": "F4-C-WEST",
-            "weight": 20,
-            "is_stairs": false
+            "target": "F4-C-SW-1",
+            "weight": 9.0
         },
         {
             "source": "GF-S-NW",
@@ -1552,6 +2131,11 @@
             "target": "F4-LIFT-S",
             "weight": 8,
             "is_stairs": false
+        },
+        {
+            "source": "GF-001",
+            "target": "GF-C-SW-2",
+            "weight": 7.0
         }
     ]
 }

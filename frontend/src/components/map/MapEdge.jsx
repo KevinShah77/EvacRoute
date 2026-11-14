@@ -34,41 +34,41 @@ export default function MapEdge({
     isHazardMode && hazard && activeSelection?.id === hazard;
 
   let stroke = '#cbd5e1';
-  let strokeWidth = 0.65;
+  let strokeWidth = 0.55;
   let dashArray = 'none';
 
   if (hazard === 'fire') {
     stroke = isSelectedHazardBrush ? '#b91c1c' : '#ef4444';
-    strokeWidth = isSelectedHazardBrush ? 2.6 : 1.5;
+    strokeWidth = isSelectedHazardBrush ? 2.0 : 1.4;
     dashArray = isSelectedHazardBrush ? '3,1' : '2,1.5';
   } else if (hazard === 'smoke') {
     stroke = isSelectedHazardBrush ? '#334155' : '#64748b';
-    strokeWidth = isSelectedHazardBrush ? 3.4 : 2.4;
+    strokeWidth = isSelectedHazardBrush ? 2.4 : 1.8;
     dashArray = isSelectedHazardBrush ? '2,1' : '1.2,1.2';
   } else if (hazard === 'debris') {
     stroke = isSelectedHazardBrush ? '#c2410c' : '#ea580c';
-    strokeWidth = isSelectedHazardBrush ? 2.8 : 1.6;
+    strokeWidth = isSelectedHazardBrush ? 2.0 : 1.4;
     dashArray = isSelectedHazardBrush ? '1.5,1' : '0.8,1.3';
   } else if (routeActive) {
     if (isPrimary && isBackup) {
       if (activeSelection?.id === 'backup') {
         stroke = '#d97706'; // Amber focused
-        strokeWidth = 2.8;
+        strokeWidth = 2.0;
         dashArray = 'none';
       } else {
         stroke = '#059669'; // Emerald green focused
-        strokeWidth = 2.8;
+        strokeWidth = 2.0;
         dashArray = 'none';
       }
     } else if (isPrimary) {
       // Primary Route: clear emerald green
       stroke = '#059669';
-      strokeWidth = activeSelection?.id === 'primary' ? 2.8 : 2.0;
+      strokeWidth = activeSelection?.id === 'primary' ? 1.8 : 1.3;
       dashArray = 'none';
     } else if (isBackup) {
       // Secondary / Backup Route: distinct amber
       stroke = '#d97706';
-      strokeWidth = activeSelection?.id === 'backup' ? 2.8 : 2.2;
+      strokeWidth = activeSelection?.id === 'backup' ? 1.8 : 1.3;
       dashArray = activeSelection?.id === 'backup' ? 'none' : '3,1.5';
     }
   }
@@ -89,9 +89,9 @@ export default function MapEdge({
     edgeLabelClass = isSelectedHazardBrush ? 'fill-orange-800 font-extrabold' : 'fill-orange-700 font-bold';
   } else if (routeActive) {
     if (isPrimary) {
-      edgeLabelClass = 'fill-emerald-800 font-bold';
+      edgeLabelClass = 'fill-emerald-800 font-bold opacity-0 group-hover:opacity-100';
     } else if (isBackup) {
-      edgeLabelClass = 'fill-amber-800 font-bold';
+      edgeLabelClass = 'fill-amber-800 font-bold opacity-0 group-hover:opacity-100';
     }
   }
 
@@ -118,6 +118,7 @@ export default function MapEdge({
         strokeWidth={strokeWidth}
         strokeDasharray={dashArray}
         strokeLinecap="round"
+        strokeLinejoin="round"
         opacity={hazard === 'smoke' ? 0.65 : 1}
         className={
           !hazard && !routeActive
@@ -127,12 +128,12 @@ export default function MapEdge({
       />
       <text
         x={midX}
-        y={midY - 1.3}
-        fontSize="2.1"
+        y={midY - 1.0}
+        fontSize="1.8"
         textAnchor="middle"
         paintOrder="stroke"
         stroke="#ffffff"
-        strokeWidth="0.5"
+        strokeWidth="0.4"
         className={`pointer-events-none select-none font-mono ${edgeLabelClass}`}
       >
         {edgeLabel}
