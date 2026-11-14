@@ -1,5 +1,13 @@
 import React from 'react';
-import { ShieldCheck, Map as MapIcon, BarChart3, Route } from 'lucide-react';
+import {
+  ShieldCheck,
+  ShieldAlert,
+  Map as MapIcon,
+  BarChart3,
+  Route,
+  Radio,
+  Flame,
+} from 'lucide-react';
 import LocationSearch from './LocationSearch';
 import ExitSelector from './ExitSelector';
 import AdaToggle from './AdaToggle';
@@ -16,16 +24,25 @@ export default function Sidebar() {
     targetNode,
     accessibleOnly,
     calculateRoute,
+    emergencyStatus,
   } = useEvacuation();
 
   const trappedRooms = stats.analytics?.summary?.trapped_rooms || 0;
+  const isEmergencyActive = emergencyStatus === 'emergency_active';
 
   return (
     <div className="w-80 bg-slate-900 text-white p-6 flex flex-col gap-5 shadow-xl overflow-y-auto shrink-0">
       <div className="flex items-center gap-3 border-b border-slate-700 pb-4">
         <ShieldCheck size={32} className="text-blue-400 shrink-0" />
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight leading-none">EvacRoute</h1>
+        <div className="flex-1">
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-bold tracking-tight leading-none">EvacRoute</h1>
+            {isEmergencyActive && (
+              <span className="bg-red-600 text-[10px] font-black uppercase px-2 py-0.5 rounded-full flex items-center gap-1 animate-pulse">
+                <Flame size={10} /> Active
+              </span>
+            )}
+          </div>
           <p className="text-xs text-slate-400 mt-1">Intelligent Evacuation Planner</p>
         </div>
       </div>
@@ -34,7 +51,7 @@ export default function Sidebar() {
       <div className="grid grid-cols-2 gap-1.5 bg-slate-800 p-1 rounded-xl">
         <button
           onClick={() => setActiveTab('map')}
-          className={`py-2 px-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-colors ${
+          className={`py-2 px-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-colors ${
             activeTab === 'map'
               ? 'bg-blue-600 text-white shadow'
               : 'text-slate-300 hover:text-white hover:bg-slate-700/60'
@@ -43,8 +60,23 @@ export default function Sidebar() {
           <MapIcon size={14} /> Floor Map
         </button>
         <button
+          onClick={() => setActiveTab('emergency-map')}
+          className={`py-2 px-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-colors relative ${
+            activeTab === 'emergency-map'
+              ? 'bg-red-600 text-white shadow'
+              : isEmergencyActive
+              ? 'bg-red-950 text-red-200 border border-red-800'
+              : 'text-slate-300 hover:text-white hover:bg-slate-700/60'
+          }`}
+        >
+          <ShieldAlert size={14} /> Emergency Map
+          {isEmergencyActive && (
+            <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
+          )}
+        </button>
+        <button
           onClick={() => setActiveTab('analytics')}
-          className={`py-2 px-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-colors relative ${
+          className={`py-2 px-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-colors relative ${
             activeTab === 'analytics'
               ? 'bg-blue-600 text-white shadow'
               : 'text-slate-300 hover:text-white hover:bg-slate-700/60'
@@ -54,6 +86,16 @@ export default function Sidebar() {
           {trappedRooms > 0 && (
             <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
           )}
+        </button>
+        <button
+          onClick={() => setActiveTab('admin')}
+          className={`py-2 px-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-colors ${
+            activeTab === 'admin'
+              ? 'bg-purple-600 text-white shadow'
+              : 'text-slate-300 hover:text-white hover:bg-slate-700/60'
+          }`}
+        >
+          <Radio size={14} /> Safety Officer
         </button>
       </div>
 
@@ -68,7 +110,11 @@ export default function Sidebar() {
 
         <button
           onClick={() => {
-            setActiveTab('map');
+            if (isEmergencyActive) {
+              setActiveTab('emergency-map');
+            } else {
+              setActiveTab('map');
+            }
             calculateRoute(startNode, targetNode, accessibleOnly, true);
           }}
           disabled={loading}

@@ -30,7 +30,54 @@ HAZARD_CONFIG = {
         "penalty": 6.0,
         "speed_multiplier": 0.4,
     },
+    "gas_leakage": {
+        "label": "Hazardous Gas Leakage",
+        "blocked": True,
+        "ada_blocked": True,
+        "penalty": None,
+        "speed_multiplier": 0.0,
+    },
+    "structural_damage": {
+        "label": "Structural Damage",
+        "blocked": True,
+        "ada_blocked": True,
+        "penalty": None,
+        "speed_multiplier": 0.0,
+    },
+    "blocked_route": {
+        "label": "Blocked Evacuation Route",
+        "blocked": True,
+        "ada_blocked": True,
+        "penalty": None,
+        "speed_multiplier": 0.0,
+    },
+    "general": {
+        "label": "General Emergency Zone",
+        "blocked": False,
+        "ada_blocked": False,
+        "penalty": 3.0,
+        "speed_multiplier": 0.6,
+    },
 }
+
+EMERGENCY_STATUSES = [
+    "normal",
+    "emergency_reported",
+    "emergency_verification",
+    "emergency_active",
+    "emergency_resolved",
+]
+
+EMERGENCY_TYPES = [
+    "fire",
+    "smoke",
+    "gas_leakage",
+    "structural_damage",
+    "blocked_route",
+    "general",
+]
+
+EMERGENCY_SEVERITIES = ["low", "medium", "high", "critical"]
 
 DEFAULT_WALK_SPEED = 1.2
 ADA_WALK_SPEED = 0.9

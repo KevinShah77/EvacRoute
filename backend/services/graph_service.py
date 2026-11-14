@@ -156,6 +156,30 @@ class GraphService:
             if d.get("type") == "exit"
         ]
 
+    def get_assembly_points(self) -> List[Dict[str, Any]]:
+        """Returns designated outdoor safe assembly points."""
+        return [
+            {"id": n, **d}
+            for n, d in self.graph.nodes(data=True)
+            if d.get("type") == "assembly_point"
+        ]
+
+    def get_assembly_point_for_exit(self, exit_id: str) -> Optional[Dict[str, Any]]:
+        """Finds closest or directly connected outdoor assembly point for an exit."""
+        if exit_id not in self.graph:
+            return None
+        # Check direct neighbors first
+        for neighbor in self.graph.neighbors(exit_id):
+            if self.graph.nodes[neighbor].get("type") == "assembly_point":
+                n_data = self.graph.nodes[neighbor]
+                weight = self.graph[exit_id][neighbor].get("weight", 15.0)
+                return {"id": neighbor, "weight": weight, **n_data}
+        # Fallback to any assembly point
+        assembly_nodes = self.get_assembly_points()
+        if assembly_nodes:
+            return assembly_nodes[0]
+        return None
+
     def find_room_by_number(self, query: str) -> Optional[Dict[str, Any]]:
         """Resolves an entered room number or query to a matching classroom/room node.
 

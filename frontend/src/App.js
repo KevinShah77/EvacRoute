@@ -8,6 +8,10 @@ import RouteSummary from './components/route/RouteSummary';
 import StepGuidance from './components/route/StepGuidance';
 import AnalyticsDashboard from './components/analytics/AnalyticsDashboard';
 import ErrorBanner from './components/common/ErrorBanner';
+import EmergencyAlert from './components/emergency/EmergencyAlert';
+import EmergencyMap from './components/emergency/EmergencyMap';
+import EmergencyControlPanel from './components/admin/EmergencyControlPanel';
+import VoiceNavigationPanel from './components/voice/VoiceNavigationPanel';
 import { EvacuationProvider } from './context/EvacuationContext';
 import { SimulationProvider } from './context/SimulationContext';
 import { useEvacuation } from './hooks/useEvacuation';
@@ -23,6 +27,7 @@ function EvacuationAppContent() {
     resetAllSimulation,
     inspectRoom,
     accessibleOnly,
+    route,
   } = useEvacuation();
 
   const hazardCounts = stats.hazard_counts || DEFAULT_HAZARD_COUNTS;
@@ -33,6 +38,9 @@ function EvacuationAppContent() {
       <Sidebar />
 
       <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Prominent Emergency Alert Banner */}
+        <EmergencyAlert />
+
         {/* Active Hazard Simulation Banner */}
         {activeHazardTotal > 0 && (
           <div className="bg-red-600 text-white px-6 py-2.5 flex items-center justify-between font-semibold shadow-md text-sm">
@@ -55,13 +63,19 @@ function EvacuationAppContent() {
         <ErrorBanner error={error} onDismiss={() => setError(null)} />
 
         <div className="p-6 lg:p-8 flex-1 overflow-y-auto">
-          {activeTab === 'analytics' ? (
+          {activeTab === 'analytics' && (
             <AnalyticsDashboard
               stats={stats}
               accessibleOnly={accessibleOnly}
               onInspectRoom={inspectRoom}
             />
-          ) : (
+          )}
+
+          {activeTab === 'emergency-map' && <EmergencyMap />}
+
+          {activeTab === 'admin' && <EmergencyControlPanel />}
+
+          {activeTab === 'map' && (
             <>
               {/* Map View Header */}
               <div className="flex flex-wrap justify-between items-end gap-4 mb-5">
@@ -82,6 +96,7 @@ function EvacuationAppContent() {
                 </div>
               </div>
 
+              {route && <VoiceNavigationPanel />}
               <HazardToolbar />
               <SimControls />
               <FloorMap />

@@ -1214,6 +1214,33 @@
             "label": "Floor 4 SW Corridor (W)",
             "x": 23.0,
             "y": 62.5
+        },
+        {
+            "id": "ASSEMBLY-MAIN",
+            "floor": "Ground",
+            "type": "assembly_point",
+            "accessible": true,
+            "label": "Safe Assembly Point 1 (East Campus Lawn)",
+            "x": 89.0,
+            "y": 65.5
+        },
+        {
+            "id": "ASSEMBLY-WEST",
+            "floor": "Ground",
+            "type": "assembly_point",
+            "accessible": true,
+            "label": "Safe Assembly Point 2 (West Athletic Field)",
+            "x": 11.0,
+            "y": 64.5
+        },
+        {
+            "id": "ASSEMBLY-NORTH",
+            "floor": "Ground",
+            "type": "assembly_point",
+            "accessible": true,
+            "label": "Safe Assembly Point 3 (North Campus Plaza)",
+            "x": 24.5,
+            "y": 2.0
         }
     ],
     "edges": [
@@ -2136,6 +2163,21 @@
             "source": "GF-001",
             "target": "GF-C-SW-2",
             "weight": 7.0
+        },
+        {
+            "source": "GF-E-MAIN",
+            "target": "ASSEMBLY-MAIN",
+            "weight": 15.0
+        },
+        {
+            "source": "GF-E-WEST",
+            "target": "ASSEMBLY-WEST",
+            "weight": 15.0
+        },
+        {
+            "source": "GF-E-NORTH",
+            "target": "ASSEMBLY-NORTH",
+            "weight": 12.0
         }
     ]
 }

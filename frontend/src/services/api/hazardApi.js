@@ -9,6 +9,8 @@ import { apiClient } from './client';
 export const blockCorridor = (u, v, hazardType = 'fire') =>
   apiClient.post('/simulate-blockage', { u, v, hazard_type: hazardType });
 
+export const simulateBlockage = blockCorridor;
+
 /**
  * Clears all active hazards and corridor blockages.
  */

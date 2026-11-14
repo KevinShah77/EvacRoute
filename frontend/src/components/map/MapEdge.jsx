@@ -37,7 +37,7 @@ export default function MapEdge({
   let strokeWidth = 0.55;
   let dashArray = 'none';
 
-  if (hazard === 'fire') {
+  if (hazard === 'fire' || hazard === 'gas_leakage') {
     stroke = isSelectedHazardBrush ? '#b91c1c' : '#ef4444';
     strokeWidth = isSelectedHazardBrush ? 2.0 : 1.4;
     dashArray = isSelectedHazardBrush ? '3,1' : '2,1.5';
@@ -45,10 +45,14 @@ export default function MapEdge({
     stroke = isSelectedHazardBrush ? '#334155' : '#64748b';
     strokeWidth = isSelectedHazardBrush ? 2.4 : 1.8;
     dashArray = isSelectedHazardBrush ? '2,1' : '1.2,1.2';
-  } else if (hazard === 'debris') {
+  } else if (hazard === 'debris' || hazard === 'structural_damage') {
     stroke = isSelectedHazardBrush ? '#c2410c' : '#ea580c';
     strokeWidth = isSelectedHazardBrush ? 2.0 : 1.4;
     dashArray = isSelectedHazardBrush ? '1.5,1' : '0.8,1.3';
+  } else if (hazard === 'blocked_route' || hazard === 'blocked') {
+    stroke = isSelectedHazardBrush ? '#334155' : '#64748b';
+    strokeWidth = isSelectedHazardBrush ? 2.2 : 1.6;
+    dashArray = '1.5,1.5';
   } else if (routeActive) {
     if (isPrimary && isBackup) {
       if (activeSelection?.id === 'backup') {
@@ -81,12 +85,18 @@ export default function MapEdge({
   if (hazard === 'fire') {
     edgeLabel = isSelectedHazardBrush ? '🔥 FIRE' : 'FIRE';
     edgeLabelClass = isSelectedHazardBrush ? 'fill-red-700 font-extrabold' : 'fill-red-600 font-bold';
+  } else if (hazard === 'gas_leakage') {
+    edgeLabel = isSelectedHazardBrush ? '☣ GAS LEAK' : 'GAS LEAK';
+    edgeLabelClass = isSelectedHazardBrush ? 'fill-red-700 font-extrabold' : 'fill-red-600 font-bold';
   } else if (hazard === 'smoke') {
     edgeLabel = isSelectedHazardBrush ? '💨 SMOKE' : 'SMOKE';
     edgeLabelClass = isSelectedHazardBrush ? 'fill-slate-900 font-extrabold' : 'fill-slate-700 font-bold';
-  } else if (hazard === 'debris') {
-    edgeLabel = isSelectedHazardBrush ? '⚠ DEBRIS' : 'DEBRIS';
+  } else if (hazard === 'debris' || hazard === 'structural_damage') {
+    edgeLabel = isSelectedHazardBrush ? '⚠ DAMAGE' : 'DAMAGE';
     edgeLabelClass = isSelectedHazardBrush ? 'fill-orange-800 font-extrabold' : 'fill-orange-700 font-bold';
+  } else if (hazard === 'blocked_route' || hazard === 'blocked') {
+    edgeLabel = isSelectedHazardBrush ? '🚫 BLOCKED' : 'BLOCKED';
+    edgeLabelClass = isSelectedHazardBrush ? 'fill-slate-900 font-extrabold' : 'fill-slate-600 font-bold';
   } else if (routeActive) {
     if (isPrimary) {
       edgeLabelClass = 'fill-emerald-800 font-bold opacity-0 group-hover:opacity-100';

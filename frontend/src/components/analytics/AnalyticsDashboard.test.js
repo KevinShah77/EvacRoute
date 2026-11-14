@@ -2,6 +2,9 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import AnalyticsDashboard from './AnalyticsDashboard';
 
+// Mock FloorEvacuationGraph to prevent unhandled async lifecycle warnings in dashboard unit tests
+jest.mock('./FloorEvacuationGraph', () => () => <div data-testid="floor-evacuation-graph-mock" />);
+
 // Mock Recharts responsive container which needs DOM measurements
 jest.mock('recharts', () => {
   const Original = jest.requireActual('recharts');

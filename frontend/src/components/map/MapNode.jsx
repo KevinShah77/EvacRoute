@@ -35,7 +35,9 @@ export default function MapNode({
   }
 
   let fill = '#334155';
-  if (node.type === 'exit') fill = '#16a34a';
+  if (isStart) fill = '#2563eb';
+  else if (node.type === 'exit') fill = '#16a34a';
+  else if (node.type === 'assembly_point') fill = '#14b8a6';
   else if (node.type === 'staircase') fill = '#f59e0b';
   else if (node.type === 'elevator') fill = '#9333ea';
   else if (node.type === 'ramp') fill = '#0d9488';
@@ -49,6 +51,7 @@ export default function MapNode({
     isStart ||
     isHazardNode ||
     node.type === 'exit' ||
+    node.type === 'assembly_point' ||
     node.type === 'staircase' ||
     node.type === 'elevator' ||
     node.type === 'classroom' ||
@@ -74,7 +77,7 @@ export default function MapNode({
   }
 
   const radius =
-    node.type === 'exit' || isStart
+    node.type === 'exit' || node.type === 'assembly_point' || isStart
       ? 1.8
       : node.type === 'staircase' || node.type === 'elevator' || node.type === 'ramp'
       ? 1.4

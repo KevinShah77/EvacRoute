@@ -256,6 +256,38 @@ class PathfindingService:
         exit_id = path[-1]
         exit_node = g.nodes[exit_id]
 
+        assembly_info = None
+        if exit_node.get("type") == "exit":
+            ap = self.graph_service.get_assembly_point_for_exit(exit_id)
+            if ap:
+                ap_dir = self.compass_direction(exit_node, ap)
+                dir_phrase = f" {ap_dir}" if ap_dir else ""
+                assembly_dist = float(ap.get("weight", 15.0))
+                assembly_info = {
+                    "id": ap["id"],
+                    "label": ap.get("label", ap["id"]),
+                    "floor": ap.get("floor", "Ground"),
+                    "distance": assembly_dist,
+                    "direction": ap_dir,
+                    "instruction": f"After exiting via {exit_node.get('label', exit_id)}, proceed{dir_phrase} {assembly_dist}m to {ap.get('label', ap['id'])}.",
+                }
+                if len(path) > 1:
+                    steps.append({
+                        "step": len(steps) + 1,
+                        "from": exit_id,
+                        "to": ap["id"],
+                        "from_label": exit_node.get("label", exit_id),
+                        "to_label": ap.get("label", ap["id"]),
+                        "floor": "Ground",
+                        "to_floor": "Ground",
+                        "distance": assembly_dist,
+                        "time_seconds": round(assembly_dist / (ADA_WALK_SPEED if accessible_only else DEFAULT_WALK_SPEED), 1),
+                        "type": "assembly",
+                        "hazard": None,
+                        "hazard_label": None,
+                        "instruction": assembly_info["instruction"],
+                    })
+
         return {
             "distance": physical_distance,
             "effective_cost": effective_cost,
@@ -271,6 +303,7 @@ class PathfindingService:
                 "label": exit_node.get("label", exit_id),
                 "floor": exit_node.get("floor", "Ground"),
             },
+            "assembly_point": assembly_info,
             "steps": steps,
         }
 
@@ -433,9 +466,12 @@ class PathfindingService:
                 "distance": -1,
                 "path": [],
                 "edges": [],
+                "steps": [],
                 "nodes_visited": len(graph_dict),
                 "auto_selected": auto_mode,
                 "accessible_mode": accessible_only,
+                "safety_status": "trapped",
+                "safety_warning": "No verified safe evacuation route exists. All exits or egress corridors are compromised. Shelter in place, keep doors closed to block smoke, and await official emergency responders.",
                 "exit_candidates": exit_candidates,
                 "backup_route": fallback_route,
             }
