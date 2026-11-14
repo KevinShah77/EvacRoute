@@ -17,6 +17,7 @@ export function EvacuationProvider({ children }) {
   const [blueprintOpacity, setBlueprintOpacity] = useState(0.85);
   const [route, setRoute] = useState(null);
   const [routeView, setRouteView] = useState('primary');
+  const [activeSelection, setActiveSelection] = useState(null); // null | { type: 'route', id: string } | { type: 'hazard', id: string }
   const [activeFloor, setActiveFloor] = useState(APP_CONFIG.DEFAULT_FLOOR);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -59,14 +60,40 @@ export function EvacuationProvider({ children }) {
       start = startNode,
       target = targetNode,
       accessible = accessibleOnly,
-      switchFloor = true
+      switchFloor = true,
+      selectionOverride = null
     ) => {
       setLoading(true);
       setError(null);
       try {
         const res = await api.findRoute(start, target, accessible);
         setRoute(res.data);
-        setRouteView('primary');
+
+        setActiveSelection((prev) => {
+          if (selectionOverride) {
+            if (selectionOverride.type === 'route') {
+              setRouteView(selectionOverride.id);
+            }
+            return selectionOverride;
+          }
+          // Preserve active hazard brush mode so corridor editing is not interrupted
+          if (prev?.type === 'hazard') {
+            return prev;
+          }
+          // Preserve backup route view if available
+          if (prev?.type === 'route' && prev?.id === 'backup' && res.data?.backup_route) {
+            setRouteView('backup');
+            return prev;
+          }
+          // If default map view (cleared selection), preserve default
+          if (prev === null) {
+            setRouteView('primary');
+            return null;
+          }
+          setRouteView('primary');
+          return { type: 'route', id: 'primary' };
+        });
+
         if (switchFloor) {
           const sNode = graph.nodes.find((n) => n.id === start);
           if (sNode?.floor) setActiveFloor(sNode.floor);
@@ -166,10 +193,29 @@ export function EvacuationProvider({ children }) {
       setTargetNode('AUTO');
       setActiveTab('map');
       if (room.floor) setActiveFloor(room.floor);
-      await calculateRoute(room.id, 'AUTO', accessibleOnly, true);
+      await calculateRoute(room.id, 'AUTO', accessibleOnly, true, { type: 'route', id: 'primary' });
     },
     [accessibleOnly, calculateRoute]
   );
+
+  const setRouteSelection = useCallback((viewType = 'primary') => {
+    setRouteView(viewType);
+    setActiveSelection({ type: 'route', id: viewType });
+  }, []);
+
+  const setHazardSelection = useCallback((toolId) => {
+    setHazardTool(toolId);
+    setActiveSelection((prev) => {
+      if (prev?.type === 'hazard' && prev?.id === toolId) {
+        return null;
+      }
+      return { type: 'hazard', id: toolId };
+    });
+  }, []);
+
+  const clearSelection = useCallback(() => {
+    setActiveSelection(null);
+  }, []);
 
   // Derive floor list cleanly from graph data
   const availableFloors =
@@ -195,6 +241,11 @@ export function EvacuationProvider({ children }) {
     toggleAccessible,
     hazardTool,
     setHazardTool,
+    activeSelection,
+    setActiveSelection,
+    setRouteSelection,
+    setHazardSelection,
+    clearSelection,
     blueprintOpacity,
     setBlueprintOpacity,
     route,

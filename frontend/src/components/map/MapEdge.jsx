@@ -7,39 +7,44 @@ export default function MapEdge({
   tgt,
   route,
   routeView,
+  activeSelection,
   onEdgeClick,
 }) {
   const hazard = edge.hazard;
+  const isRouteMode = activeSelection?.type === 'route';
+  const isHazardMode = activeSelection?.type === 'hazard';
+
   const isPrimary = edgeMatchesList(route?.edges, edge.source, edge.target);
   const isBackup = edgeMatchesList(route?.backup_route?.edges, edge.source, edge.target);
 
-  const isHighlighted = routeView === 'backup' && route?.backup_route ? isBackup : isPrimary;
-  const isSecondaryOverlay =
-    routeView === 'backup' ? isPrimary && !isBackup : isBackup && !isPrimary;
+  // When a route is selected, ONLY highlight the currently active route's edges
+  const isHighlighted =
+    isRouteMode &&
+    (activeSelection?.id === 'backup' ? isBackup : isPrimary);
+
+  // Distinguish the selected hazard brush
+  const isSelectedHazardBrush =
+    isHazardMode && hazard && activeSelection?.id === hazard;
 
   let stroke = '#cbd5e1';
   let strokeWidth = 0.65;
   let dashArray = 'none';
 
   if (hazard === 'fire') {
-    stroke = '#ef4444';
-    strokeWidth = 1.35;
-    dashArray = '2,1.5';
+    stroke = isSelectedHazardBrush ? '#b91c1c' : '#ef4444';
+    strokeWidth = isSelectedHazardBrush ? 2.6 : 1.35;
+    dashArray = isSelectedHazardBrush ? '3,1' : '2,1.5';
   } else if (hazard === 'smoke') {
-    stroke = '#64748b';
-    strokeWidth = 2.4;
-    dashArray = '1.2,1.2';
+    stroke = isSelectedHazardBrush ? '#334155' : '#64748b';
+    strokeWidth = isSelectedHazardBrush ? 3.4 : 2.4;
+    dashArray = isSelectedHazardBrush ? '2,1' : '1.2,1.2';
   } else if (hazard === 'debris') {
-    stroke = '#ea580c';
-    strokeWidth = 1.6;
-    dashArray = '0.8,1.3';
+    stroke = isSelectedHazardBrush ? '#c2410c' : '#ea580c';
+    strokeWidth = isSelectedHazardBrush ? 2.8 : 1.6;
+    dashArray = isSelectedHazardBrush ? '1.5,1' : '0.8,1.3';
   } else if (isHighlighted) {
-    stroke = routeView === 'backup' ? '#fde68a' : '#bfdbfe';
+    stroke = activeSelection?.id === 'backup' ? '#fde68a' : '#bfdbfe';
     strokeWidth = 2.0;
-  } else if (isSecondaryOverlay) {
-    stroke = routeView === 'backup' ? '#93c5fd' : '#fbbf24';
-    strokeWidth = 1.05;
-    dashArray = '1.8,1.2';
   }
 
   const midX = (src.x + tgt.x) / 2;
@@ -48,14 +53,14 @@ export default function MapEdge({
   let edgeLabel = `${edge.weight}m`;
   let edgeLabelClass = 'fill-slate-400 opacity-0 group-hover:opacity-100';
   if (hazard === 'fire') {
-    edgeLabel = 'FIRE';
-    edgeLabelClass = 'fill-red-600 font-bold';
+    edgeLabel = isSelectedHazardBrush ? '🔥 FIRE' : 'FIRE';
+    edgeLabelClass = isSelectedHazardBrush ? 'fill-red-700 font-extrabold' : 'fill-red-600 font-bold';
   } else if (hazard === 'smoke') {
-    edgeLabel = 'SMOKE';
-    edgeLabelClass = 'fill-slate-700 font-bold';
+    edgeLabel = isSelectedHazardBrush ? '💨 SMOKE' : 'SMOKE';
+    edgeLabelClass = isSelectedHazardBrush ? 'fill-slate-900 font-extrabold' : 'fill-slate-700 font-bold';
   } else if (hazard === 'debris') {
-    edgeLabel = 'DEBRIS';
-    edgeLabelClass = 'fill-orange-700 font-bold';
+    edgeLabel = isSelectedHazardBrush ? '⚠ DEBRIS' : 'DEBRIS';
+    edgeLabelClass = isSelectedHazardBrush ? 'fill-orange-800 font-extrabold' : 'fill-orange-700 font-bold';
   } else if (isHighlighted) {
     edgeLabelClass = 'fill-slate-800 font-bold';
   }

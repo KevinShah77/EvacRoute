@@ -16,7 +16,7 @@ export default function FloorMap() {
     blueprintOpacity,
     route,
     routeView,
-    displayedRoute,
+    activeSelection,
     startNode,
     applyCorridorHazard,
     setStartLocation,
@@ -30,6 +30,15 @@ export default function FloorMap() {
       activeNodes.find((n) => n.id === e.source) &&
       activeNodes.find((n) => n.id === e.target)
   );
+
+  const isRouteSelected = activeSelection?.type === 'route' && route;
+  const selectedRouteObj = isRouteSelected
+    ? activeSelection.id === 'backup' && route?.backup_route
+      ? route.backup_route
+      : activeSelection.id === 'primary'
+      ? route
+      : null
+    : null;
 
   const getOrderedFloorSteps = (routeObj) => {
     if (!routeObj?.steps) return [];
@@ -46,8 +55,17 @@ export default function FloorMap() {
   const primaryFloorSteps = getOrderedFloorSteps(route);
   const backupFloorSteps = getOrderedFloorSteps(route?.backup_route);
 
+  const selectedFloorSteps = isRouteSelected
+    ? activeSelection.id === 'backup' && route?.backup_route
+      ? backupFloorSteps
+      : activeSelection.id === 'primary'
+      ? primaryFloorSteps
+      : []
+    : [];
+
   const getFloorTransitionInfo = (nodeId) => {
-    const steps = displayedRoute?.steps || [];
+    if (!isRouteSelected || !selectedRouteObj?.steps) return null;
+    const steps = selectedRouteObj.steps || [];
     const outgoing = steps.find((s) => s.from === nodeId && s.floor !== s.to_floor);
     const incoming = steps.find((s) => s.to === nodeId && s.floor !== s.to_floor);
     if (!outgoing && !incoming) return null;
@@ -109,16 +127,14 @@ export default function FloorMap() {
                 tgt={tgt}
                 route={route}
                 routeView={routeView}
+                activeSelection={activeSelection}
                 onEdgeClick={applyCorridorHazard}
               />
             );
           })}
 
-          {/* Animated Directional Flow Overlay */}
-          {(routeView === 'backup' && route?.backup_route
-            ? backupFloorSteps
-            : primaryFloorSteps
-          ).map((s) => (
+          {/* Animated Directional Flow Overlay - Rendered ONLY for selected route */}
+          {selectedFloorSteps.map((s) => (
             <line
               key={`flow-${s.step}`}
               x1={s.src.x}
@@ -128,14 +144,14 @@ export default function FloorMap() {
               stroke={
                 s.hazard
                   ? '#ea580c'
-                  : routeView === 'backup'
+                  : activeSelection?.id === 'backup'
                   ? '#d97706'
                   : '#2563eb'
               }
               strokeWidth={1.35}
               strokeLinecap="round"
               className={`pointer-events-none ${
-                routeView === 'backup' ? 'evac-flow-backup' : 'evac-flow-primary'
+                activeSelection?.id === 'backup' ? 'evac-flow-backup' : 'evac-flow-primary'
               }`}
             />
           ))}
@@ -143,7 +159,9 @@ export default function FloorMap() {
           {/* Floor Nodes */}
           {activeNodes.map((node) => {
             const isStart = node.id === startNode;
-            const onDisplayedPath = displayedRoute?.path?.includes(node.id);
+            const onDisplayedPath = Boolean(
+              isRouteSelected && selectedRouteObj?.path?.includes(node.id)
+            );
             const transitionInfo = getFloorTransitionInfo(node.id);
 
             return (
@@ -153,6 +171,7 @@ export default function FloorMap() {
                 isStart={isStart}
                 onDisplayedPath={onDisplayedPath}
                 routeView={routeView}
+                activeSelection={activeSelection}
                 transitionInfo={transitionInfo}
                 onNodeClick={setStartLocation}
                 onTransitionClick={setActiveFloor}

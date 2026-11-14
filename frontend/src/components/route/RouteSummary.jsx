@@ -15,7 +15,9 @@ export default function RouteSummary() {
   const {
     route,
     routeView,
-    setRouteView,
+    activeSelection,
+    setRouteSelection,
+    clearSelection,
     displayedRoute,
     startNode,
     setTargetNode,
@@ -78,13 +80,18 @@ export default function RouteSummary() {
           <button
             onClick={() => {
               resetSimulationPlayback();
-              setRouteView('primary');
+              if (activeSelection?.type === 'route' && activeSelection?.id === 'primary') {
+                clearSelection();
+              } else {
+                setRouteSelection('primary');
+              }
             }}
             className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
-              routeView === 'primary'
+              activeSelection?.type === 'route' && activeSelection?.id === 'primary'
                 ? 'bg-blue-600 text-white shadow-sm'
                 : 'text-slate-600 hover:bg-slate-100'
             }`}
+            title="Focus Primary Route on floor map"
           >
             <Zap size={15} />
             Primary Route ({route.distance}m · {route.formatted_time})
@@ -94,13 +101,18 @@ export default function RouteSummary() {
             <button
               onClick={() => {
                 resetSimulationPlayback();
-                setRouteView('backup');
+                if (activeSelection?.type === 'route' && activeSelection?.id === 'backup') {
+                  clearSelection();
+                } else {
+                  setRouteSelection('backup');
+                }
               }}
               className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
-                routeView === 'backup'
+                activeSelection?.type === 'route' && activeSelection?.id === 'backup'
                   ? 'bg-amber-500 text-white shadow-sm'
                   : 'text-slate-600 hover:bg-slate-100'
               }`}
+              title="Focus Backup Route on floor map"
             >
               <ShieldAlert size={15} />
               Backup Route ({route.backup_route.distance}m ·{' '}
@@ -186,6 +198,7 @@ export default function RouteSummary() {
                     if (cand.reachable) {
                       setTargetNode(cand.id);
                       calculateRoute(startNode, cand.id, accessibleOnly, false);
+                      setRouteSelection('primary');
                     }
                   }}
                   disabled={!cand.reachable}

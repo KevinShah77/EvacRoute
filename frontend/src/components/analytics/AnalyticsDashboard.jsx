@@ -23,6 +23,7 @@ import {
   Navigation,
 } from 'lucide-react';
 import { DEFAULT_HAZARD_COUNTS } from '../../constants/hazardConfig';
+import FloorEvacuationGraph from './FloorEvacuationGraph';
 
 const DYNAMIC_PALETTE = ['#2563eb', '#0d9488', '#16a34a', '#8b5cf6', '#f59e0b', '#ec4899'];
 
@@ -177,6 +178,15 @@ export default function AnalyticsDashboard({ stats, accessibleOnly, onInspectRoo
           </p>
         </div>
       </div>
+
+      {/* Dynamic Floor-Wise & Entrance-Wise Evacuation Network Graph */}
+      <FloorEvacuationGraph
+        accessibleOnly={accessibleOnly}
+        onInspectRoom={onInspectRoom}
+        initialFloors={stats?.floors}
+        initialEntrances={stats?.available_entrances}
+        initialGraphData={stats?.floor_evacuation_graph}
+      />
 
       {/* Charts Grid Row 1: RSET per Room + Exit Utilization */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

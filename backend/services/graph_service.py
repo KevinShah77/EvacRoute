@@ -2,6 +2,7 @@
 
 import json
 from pathlib import Path
+import re
 from typing import Any, Dict, List, Optional, Set, Tuple
 import networkx as nx
 
@@ -146,3 +147,94 @@ class GraphService:
             graph_dict[v][u] = effective_weight
 
         return graph_dict
+
+    def get_entrances(self) -> List[Dict[str, Any]]:
+        """Returns all exit/entrance nodes in the building graph."""
+        return [
+            {"id": n, **d}
+            for n, d in self.graph.nodes(data=True)
+            if d.get("type") == "exit"
+        ]
+
+    def find_room_by_number(self, query: str) -> Optional[Dict[str, Any]]:
+        """Resolves an entered room number or query to a matching classroom/room node.
+
+        Accepts inputs like '101', '201', '001', '1', 'GF-001', 'F1-113', 'Room 201'.
+        Prevents false positive substring matches and duplicate/ambiguous room matching.
+        """
+        if not query or not str(query).strip():
+            return None
+
+        raw = str(query).strip()
+        cleaned = raw.lower()
+
+        # Normalize common room prefixes (e.g., 'room 201', 'rm 201', '#201', 'no. 201')
+        cleaned_no_prefix = re.sub(
+            r"^(?:room|rm|no)\b\.?\s*|^#\s*", "", cleaned, flags=re.IGNORECASE
+        ).strip()
+
+        # Also strip spaces and dashes for normalized node ID matching (e.g. 'gf001', 'f1113')
+        norm_raw = re.sub(r"[\s\-_]+", "", cleaned)
+        norm_no_prefix = re.sub(r"[\s\-_]+", "", cleaned_no_prefix)
+
+        room_nodes = [
+            (nid, data)
+            for nid, data in self.graph.nodes(data=True)
+            if data.get("type") in ("classroom", "room")
+        ]
+
+        # 1. Exact node ID match (e.g. 'GF-001', 'gf-001', 'gf001', 'F1-113', 'f1113')
+        for nid, data in room_nodes:
+            nid_lower = nid.lower()
+            nid_norm = re.sub(r"[\s\-_]+", "", nid_lower)
+            if (
+                nid_lower == cleaned
+                or nid_lower == cleaned_no_prefix
+                or nid_norm == norm_raw
+                or nid_norm == norm_no_prefix
+            ):
+                return {"id": nid, **data}
+
+        # 2. Extract digits for room number matching (e.g. '201', '001', '1', 'Lecture Hall 201')
+        digit_matches = re.findall(r"\d+", cleaned_no_prefix or cleaned)
+        if digit_matches:
+            target_num_str = digit_matches[-1]
+            target_num_int = int(target_num_str)
+
+            matching_rooms = []
+            for nid, data in room_nodes:
+                label = data.get("label", "")
+                m = re.search(r"\((\d+)\)", label)
+                if m:
+                    label_num_str = m.group(1)
+                    label_num_int = int(label_num_str)
+                    if (
+                        label_num_str == target_num_str
+                        or label_num_int == target_num_int
+                    ):
+                        matching_rooms.append({"id": nid, **data})
+
+            if len(matching_rooms) == 1:
+                return matching_rooms[0]
+            elif len(matching_rooms) > 1:
+                # Disambiguate if query also contains floor prefix or exact digits string
+                exact = [
+                    r for r in matching_rooms
+                    if re.search(r"\((\d+)\)", r.get("label", "")).group(1) == target_num_str
+                ]
+                if len(exact) == 1:
+                    return exact[0]
+
+        # 3. Exact full room title match (ignoring parenthesized room number, e.g. "Physics Lab")
+        # Only match if there is a UNIQUE room with this title to prevent incorrect node matching
+        matching_by_title = []
+        for nid, data in room_nodes:
+            label = data.get("label", "")
+            title = re.sub(r"\s*\(\d+\)\s*", "", label).strip().lower()
+            if title == cleaned or title == cleaned_no_prefix:
+                matching_by_title.append({"id": nid, **data})
+
+        if len(matching_by_title) == 1:
+            return matching_by_title[0]
+
+        return None

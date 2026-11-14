@@ -5,6 +5,7 @@ export default function MapNode({
   isStart,
   onDisplayedPath,
   routeView,
+  activeSelection,
   transitionInfo,
   onNodeClick,
   onTransitionClick,
@@ -14,6 +15,9 @@ export default function MapNode({
   else if (node.type === 'staircase') fill = '#f59e0b';
   else if (node.type === 'elevator') fill = '#9333ea';
   else if (node.type === 'ramp') fill = '#0d9488';
+
+  const isRouteSelected = activeSelection?.type === 'route';
+  const isBackupSelected = isRouteSelected && activeSelection?.id === 'backup';
 
   const showLabel =
     isStart ||
@@ -60,13 +64,13 @@ export default function MapNode({
         stroke={
           isStart
             ? '#1d4ed8'
-            : onDisplayedPath
-            ? routeView === 'backup'
+            : onDisplayedPath && isRouteSelected
+            ? isBackupSelected
               ? '#d97706'
               : '#3b82f6'
             : '#ffffff'
         }
-        strokeWidth={onDisplayedPath || isStart ? '0.8' : '0.4'}
+        strokeWidth={onDisplayedPath && isRouteSelected ? '0.9' : isStart ? '0.8' : '0.4'}
       />
 
       <text
