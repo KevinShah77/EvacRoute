@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes evacDashFlow {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+@keyframes evacPulseRing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.evac-flow-primary {
+  stroke-dasharray: 3.5 2.5;
+  animation: evacDashFlow 0.7s linear infinite;
+}
+
+.evac-flow-backup {
+  stroke-dasharray: 2.5 2;
+  animation: evacDashFlow 1.1s linear infinite;
+}
+
+.evac-avatar-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: evacPulseRing 1.4s cubic-bezier(0.2, 0.7, 0.4, 1) infinite;
+}

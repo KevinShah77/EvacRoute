@@ -1,0 +1,1557 @@
+{
+    "nodes": [
+        {
+            "id": "GF-E-MAIN",
+            "floor": "Ground",
+            "type": "exit",
+            "accessible": true,
+            "label": "Main Entrance & Exit (SE)",
+            "x": 79,
+            "y": 65.5
+        },
+        {
+            "id": "GF-E-WEST",
+            "floor": "Ground",
+            "type": "exit",
+            "accessible": true,
+            "label": "West Perimeter Exit",
+            "x": 21,
+            "y": 64.5
+        },
+        {
+            "id": "GF-E-NORTH",
+            "floor": "Ground",
+            "type": "exit",
+            "accessible": true,
+            "label": "North Perimeter Exit",
+            "x": 24.5,
+            "y": 9.5
+        },
+        {
+            "id": "GF-RAMP",
+            "floor": "Ground",
+            "type": "ramp",
+            "accessible": true,
+            "label": "SE Accessible Ramp",
+            "x": 73,
+            "y": 64
+        },
+        {
+            "id": "GF-LIFT-S",
+            "floor": "Ground",
+            "type": "elevator",
+            "accessible": true,
+            "label": "South Lift (Ground)",
+            "x": 45.8,
+            "y": 57
+        },
+        {
+            "id": "GF-S-NW",
+            "floor": "Ground",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Ground North-West Stairs",
+            "x": 25.5,
+            "y": 17
+        },
+        {
+            "id": "GF-S-NE",
+            "floor": "Ground",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Ground North-East Stairs",
+            "x": 67,
+            "y": 20
+        },
+        {
+            "id": "GF-S-SW",
+            "floor": "Ground",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Ground South-West Stairs",
+            "x": 26.5,
+            "y": 47
+        },
+        {
+            "id": "GF-S-SE",
+            "floor": "Ground",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Ground South-East Stairs",
+            "x": 68.5,
+            "y": 61.5
+        },
+        {
+            "id": "GF-C-NORTH",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground North Corridor",
+            "x": 36,
+            "y": 28
+        },
+        {
+            "id": "GF-C-EAST",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground East Corridor",
+            "x": 66,
+            "y": 50
+        },
+        {
+            "id": "GF-C-SOUTH",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground South Corridor",
+            "x": 47,
+            "y": 62
+        },
+        {
+            "id": "GF-C-WEST",
+            "floor": "Ground",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Ground West Corridor",
+            "x": 27,
+            "y": 55
+        },
+        {
+            "id": "GF-001",
+            "floor": "Ground",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Admin Office (001)",
+            "x": 18.5,
+            "y": 54
+        },
+        {
+            "id": "GF-002",
+            "floor": "Ground",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Seminar Hall (002)",
+            "x": 14.5,
+            "y": 44
+        },
+        {
+            "id": "GF-003",
+            "floor": "Ground",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Kemi Faculty-1 (003)",
+            "x": 16.5,
+            "y": 34
+        },
+        {
+            "id": "GF-004",
+            "floor": "Ground",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Lecture Hall (004)",
+            "x": 19,
+            "y": 24
+        },
+        {
+            "id": "GF-007",
+            "floor": "Ground",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Vice Chancellor (007)",
+            "x": 32,
+            "y": 46.5
+        },
+        {
+            "id": "GF-008",
+            "floor": "Ground",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Placement Office (008)",
+            "x": 41,
+            "y": 56
+        },
+        {
+            "id": "GF-009",
+            "floor": "Ground",
+            "type": "classroom",
+            "accessible": true,
+            "label": "SIT Director (009)",
+            "x": 51,
+            "y": 56
+        },
+        {
+            "id": "GF-011",
+            "floor": "Ground",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Chemistry Lab (011)",
+            "x": 62.5,
+            "y": 69
+        },
+        {
+            "id": "GF-012",
+            "floor": "Ground",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Physics Lab (012)",
+            "x": 53,
+            "y": 69
+        },
+        {
+            "id": "GF-014",
+            "floor": "Ground",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Board Room (014)",
+            "x": 33.5,
+            "y": 69
+        },
+        {
+            "id": "F1-LIFT-S",
+            "floor": "Floor 1",
+            "type": "elevator",
+            "accessible": true,
+            "label": "South Lift (Floor 1)",
+            "x": 45.8,
+            "y": 57
+        },
+        {
+            "id": "F1-S-NW",
+            "floor": "Floor 1",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 1 North-West Stairs",
+            "x": 25.5,
+            "y": 17
+        },
+        {
+            "id": "F1-S-NE",
+            "floor": "Floor 1",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 1 North-East Stairs",
+            "x": 67,
+            "y": 20
+        },
+        {
+            "id": "F1-S-SW",
+            "floor": "Floor 1",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 1 South-West Stairs",
+            "x": 26.5,
+            "y": 47
+        },
+        {
+            "id": "F1-S-SE",
+            "floor": "Floor 1",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 1 South-East Stairs",
+            "x": 68.5,
+            "y": 61.5
+        },
+        {
+            "id": "F1-C-NORTH",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 North Corridor",
+            "x": 36,
+            "y": 28
+        },
+        {
+            "id": "F1-C-EAST",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 East Corridor",
+            "x": 66,
+            "y": 50
+        },
+        {
+            "id": "F1-C-SOUTH",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 South Corridor",
+            "x": 47,
+            "y": 62
+        },
+        {
+            "id": "F1-C-WEST",
+            "floor": "Floor 1",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 1 West Corridor",
+            "x": 27,
+            "y": 55
+        },
+        {
+            "id": "F1-113",
+            "floor": "Floor 1",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Seminar Hall (113)",
+            "x": 16,
+            "y": 60
+        },
+        {
+            "id": "F1-114",
+            "floor": "Floor 1",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Electronics Comm Lab (114)",
+            "x": 13,
+            "y": 51
+        },
+        {
+            "id": "F1-115",
+            "floor": "Floor 1",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Analog & Power Lab (115)",
+            "x": 14,
+            "y": 42
+        },
+        {
+            "id": "F1-116",
+            "floor": "Floor 1",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Digital Electronics (116)",
+            "x": 17,
+            "y": 33
+        },
+        {
+            "id": "F1-118",
+            "floor": "Floor 1",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Fluid Mechanics Lab (118)",
+            "x": 48,
+            "y": 11
+        },
+        {
+            "id": "F1-120",
+            "floor": "Floor 1",
+            "type": "classroom",
+            "accessible": true,
+            "label": "CNMS Lab (120)",
+            "x": 75,
+            "y": 17
+        },
+        {
+            "id": "F1-122",
+            "floor": "Floor 1",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Machine Shop (122)",
+            "x": 82,
+            "y": 44
+        },
+        {
+            "id": "F1-124",
+            "floor": "Floor 1",
+            "type": "classroom",
+            "accessible": true,
+            "label": "CS Project Lab (124)",
+            "x": 60,
+            "y": 74
+        },
+        {
+            "id": "F1-125",
+            "floor": "Floor 1",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Computer Lab (125)",
+            "x": 50,
+            "y": 73
+        },
+        {
+            "id": "F2-LIFT-S",
+            "floor": "Floor 2",
+            "type": "elevator",
+            "accessible": true,
+            "label": "South Lift (Floor 2)",
+            "x": 45.8,
+            "y": 57
+        },
+        {
+            "id": "F2-S-NW",
+            "floor": "Floor 2",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 2 North-West Stairs",
+            "x": 25.5,
+            "y": 17
+        },
+        {
+            "id": "F2-S-NE",
+            "floor": "Floor 2",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 2 North-East Stairs",
+            "x": 67,
+            "y": 20
+        },
+        {
+            "id": "F2-S-SW",
+            "floor": "Floor 2",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 2 South-West Stairs",
+            "x": 26.5,
+            "y": 47
+        },
+        {
+            "id": "F2-S-SE",
+            "floor": "Floor 2",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 2 South-East Stairs",
+            "x": 68.5,
+            "y": 61.5
+        },
+        {
+            "id": "F2-C-NORTH",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 North Corridor",
+            "x": 36,
+            "y": 28
+        },
+        {
+            "id": "F2-C-EAST",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 East Corridor",
+            "x": 66,
+            "y": 50
+        },
+        {
+            "id": "F2-C-SOUTH",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 South Corridor",
+            "x": 47,
+            "y": 62
+        },
+        {
+            "id": "F2-C-WEST",
+            "floor": "Floor 2",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 2 West Corridor",
+            "x": 27,
+            "y": 55
+        },
+        {
+            "id": "F2-201",
+            "floor": "Floor 2",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Lecture Hall (201)",
+            "x": 28,
+            "y": 51
+        },
+        {
+            "id": "F2-214",
+            "floor": "Floor 2",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Electronics HDL Lab (214)",
+            "x": 13,
+            "y": 48
+        },
+        {
+            "id": "F2-215",
+            "floor": "Floor 2",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Micro Controller Lab (215)",
+            "x": 14,
+            "y": 39
+        },
+        {
+            "id": "F2-217",
+            "floor": "Floor 2",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Research Lab CET (217)",
+            "x": 36,
+            "y": 11
+        },
+        {
+            "id": "F2-219",
+            "floor": "Floor 2",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Electrical Lab (219)",
+            "x": 56,
+            "y": 8
+        },
+        {
+            "id": "F2-220",
+            "floor": "Floor 2",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Library (220)",
+            "x": 73,
+            "y": 15
+        },
+        {
+            "id": "F2-222",
+            "floor": "Floor 2",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Engineering Workshop (222)",
+            "x": 79,
+            "y": 41
+        },
+        {
+            "id": "F2-224",
+            "floor": "Floor 2",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Computer Lab (224)",
+            "x": 57,
+            "y": 73
+        },
+        {
+            "id": "F2-225",
+            "floor": "Floor 2",
+            "type": "classroom",
+            "accessible": true,
+            "label": "CAD/CAM Lab (225)",
+            "x": 48,
+            "y": 73
+        },
+        {
+            "id": "F2-227",
+            "floor": "Floor 2",
+            "type": "classroom",
+            "accessible": true,
+            "label": "EC Faculty Room (227)",
+            "x": 30,
+            "y": 73
+        },
+        {
+            "id": "F3-LIFT-S",
+            "floor": "Floor 3",
+            "type": "elevator",
+            "accessible": true,
+            "label": "South Lift (Floor 3)",
+            "x": 45.8,
+            "y": 57
+        },
+        {
+            "id": "F3-S-NW",
+            "floor": "Floor 3",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 3 North-West Stairs",
+            "x": 25.5,
+            "y": 17
+        },
+        {
+            "id": "F3-S-NE",
+            "floor": "Floor 3",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 3 North-East Stairs",
+            "x": 67,
+            "y": 20
+        },
+        {
+            "id": "F3-S-SW",
+            "floor": "Floor 3",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 3 South-West Stairs",
+            "x": 26.5,
+            "y": 47
+        },
+        {
+            "id": "F3-S-SE",
+            "floor": "Floor 3",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 3 South-East Stairs",
+            "x": 68.5,
+            "y": 61.5
+        },
+        {
+            "id": "F3-C-NORTH",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 North Corridor",
+            "x": 36,
+            "y": 28
+        },
+        {
+            "id": "F3-C-EAST",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 East Corridor",
+            "x": 66,
+            "y": 50
+        },
+        {
+            "id": "F3-C-SOUTH",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 South Corridor",
+            "x": 47,
+            "y": 62
+        },
+        {
+            "id": "F3-C-WEST",
+            "floor": "Floor 3",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 3 West Corridor",
+            "x": 27,
+            "y": 55
+        },
+        {
+            "id": "F3-313",
+            "floor": "Floor 3",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Examination Section (313)",
+            "x": 16,
+            "y": 60
+        },
+        {
+            "id": "F3-315",
+            "floor": "Floor 3",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Gymnasium (315)",
+            "x": 15,
+            "y": 42
+        },
+        {
+            "id": "F3-316",
+            "floor": "Floor 3",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Programming Lab (316)",
+            "x": 17,
+            "y": 33
+        },
+        {
+            "id": "F3-318",
+            "floor": "Floor 3",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Library Store (318)",
+            "x": 47,
+            "y": 10
+        },
+        {
+            "id": "F3-320",
+            "floor": "Floor 3",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Digital Library (320)",
+            "x": 74,
+            "y": 16
+        },
+        {
+            "id": "F3-323",
+            "floor": "Floor 3",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Basic Science Lab (323)",
+            "x": 79,
+            "y": 52
+        },
+        {
+            "id": "F3-325",
+            "floor": "Floor 3",
+            "type": "classroom",
+            "accessible": true,
+            "label": "IS Faculty & HOD (325)",
+            "x": 48,
+            "y": 75
+        },
+        {
+            "id": "F3-327",
+            "floor": "Floor 3",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Examination Section (327)",
+            "x": 29,
+            "y": 74
+        },
+        {
+            "id": "F4-LIFT-S",
+            "floor": "Floor 4",
+            "type": "elevator",
+            "accessible": true,
+            "label": "South Lift (Floor 4)",
+            "x": 45.8,
+            "y": 57
+        },
+        {
+            "id": "F4-S-NW",
+            "floor": "Floor 4",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 4 North-West Stairs",
+            "x": 25.5,
+            "y": 17
+        },
+        {
+            "id": "F4-S-NE",
+            "floor": "Floor 4",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 4 North-East Stairs",
+            "x": 67,
+            "y": 20
+        },
+        {
+            "id": "F4-S-SW",
+            "floor": "Floor 4",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 4 South-West Stairs",
+            "x": 26.5,
+            "y": 47
+        },
+        {
+            "id": "F4-S-SE",
+            "floor": "Floor 4",
+            "type": "staircase",
+            "accessible": false,
+            "label": "Floor 4 South-East Stairs",
+            "x": 68.5,
+            "y": 61.5
+        },
+        {
+            "id": "F4-C-NORTH",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 North Corridor",
+            "x": 36,
+            "y": 28
+        },
+        {
+            "id": "F4-C-EAST",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 East Corridor",
+            "x": 66,
+            "y": 50
+        },
+        {
+            "id": "F4-C-SOUTH",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 South Corridor",
+            "x": 47,
+            "y": 62
+        },
+        {
+            "id": "F4-C-WEST",
+            "floor": "Floor 4",
+            "type": "corridor",
+            "accessible": true,
+            "label": "Floor 4 West Corridor",
+            "x": 27,
+            "y": 55
+        },
+        {
+            "id": "F4-414",
+            "floor": "Floor 4",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Dairy Tech Lab (414)",
+            "x": 15,
+            "y": 58
+        },
+        {
+            "id": "F4-416",
+            "floor": "Floor 4",
+            "type": "classroom",
+            "accessible": true,
+            "label": "CNMS Lab (416)",
+            "x": 13,
+            "y": 47
+        },
+        {
+            "id": "F4-420",
+            "floor": "Floor 4",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Pathogens Lab (420)",
+            "x": 16,
+            "y": 28
+        },
+        {
+            "id": "F4-423",
+            "floor": "Floor 4",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Photo & Electro Catalysis (423)",
+            "x": 45,
+            "y": 9
+        },
+        {
+            "id": "F4-426",
+            "floor": "Floor 4",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Nano & Bio Interfaces (426)",
+            "x": 81,
+            "y": 32
+        },
+        {
+            "id": "F4-428",
+            "floor": "Floor 4",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Physical Chemistry (428)",
+            "x": 82,
+            "y": 44
+        },
+        {
+            "id": "F4-430",
+            "floor": "Floor 4",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Carbonic Chemistry (430)",
+            "x": 76,
+            "y": 54
+        },
+        {
+            "id": "F4-434",
+            "floor": "Floor 4",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Food Faculty Room (434)",
+            "x": 45,
+            "y": 75
+        },
+        {
+            "id": "F4-437",
+            "floor": "Floor 4",
+            "type": "classroom",
+            "accessible": true,
+            "label": "Greenhouse Farming (437)",
+            "x": 26,
+            "y": 75
+        }
+    ],
+    "edges": [
+        {
+            "source": "GF-C-WEST",
+            "target": "GF-E-WEST",
+            "weight": 11,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-C-NORTH",
+            "target": "GF-E-NORTH",
+            "weight": 22,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-C-SOUTH",
+            "target": "GF-RAMP",
+            "weight": 26,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-RAMP",
+            "target": "GF-E-MAIN",
+            "weight": 7,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-S-SE",
+            "target": "GF-E-MAIN",
+            "weight": 11,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-C-SOUTH",
+            "target": "GF-LIFT-S",
+            "weight": 5,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-C-NORTH",
+            "target": "GF-S-NW",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-C-EAST",
+            "target": "GF-S-NE",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-C-WEST",
+            "target": "GF-S-SW",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-C-SOUTH",
+            "target": "GF-S-SE",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-C-WEST",
+            "target": "GF-C-SOUTH",
+            "weight": 21,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-C-SOUTH",
+            "target": "GF-C-EAST",
+            "weight": 22,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-C-EAST",
+            "target": "GF-C-NORTH",
+            "weight": 36,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-C-NORTH",
+            "target": "GF-C-WEST",
+            "weight": 28,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-001",
+            "target": "GF-C-WEST",
+            "weight": 9,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-002",
+            "target": "GF-C-WEST",
+            "weight": 14,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-003",
+            "target": "GF-C-WEST",
+            "weight": 18,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-004",
+            "target": "GF-C-NORTH",
+            "weight": 17,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-007",
+            "target": "GF-C-WEST",
+            "weight": 10,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-008",
+            "target": "GF-C-SOUTH",
+            "weight": 8,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-009",
+            "target": "GF-C-SOUTH",
+            "weight": 8,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-011",
+            "target": "GF-C-SOUTH",
+            "weight": 16,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-012",
+            "target": "GF-C-SOUTH",
+            "weight": 10,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-014",
+            "target": "GF-C-WEST",
+            "weight": 15,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-C-SOUTH",
+            "target": "F1-LIFT-S",
+            "weight": 5,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-C-NORTH",
+            "target": "F1-S-NW",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-C-EAST",
+            "target": "F1-S-NE",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-C-WEST",
+            "target": "F1-S-SW",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-C-SOUTH",
+            "target": "F1-S-SE",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-C-WEST",
+            "target": "F1-C-SOUTH",
+            "weight": 21,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-C-SOUTH",
+            "target": "F1-C-EAST",
+            "weight": 22,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-C-EAST",
+            "target": "F1-C-NORTH",
+            "weight": 36,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-C-NORTH",
+            "target": "F1-C-WEST",
+            "weight": 28,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-113",
+            "target": "F1-C-WEST",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-114",
+            "target": "F1-C-WEST",
+            "weight": 14,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-115",
+            "target": "F1-C-WEST",
+            "weight": 18,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-116",
+            "target": "F1-C-WEST",
+            "weight": 24,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-118",
+            "target": "F1-C-NORTH",
+            "weight": 21,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-120",
+            "target": "F1-C-NORTH",
+            "weight": 40,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-122",
+            "target": "F1-C-EAST",
+            "weight": 17,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-124",
+            "target": "F1-C-SOUTH",
+            "weight": 18,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-125",
+            "target": "F1-C-SOUTH",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-C-SOUTH",
+            "target": "F2-LIFT-S",
+            "weight": 5,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-C-NORTH",
+            "target": "F2-S-NW",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-C-EAST",
+            "target": "F2-S-NE",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-C-WEST",
+            "target": "F2-S-SW",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-C-SOUTH",
+            "target": "F2-S-SE",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-C-WEST",
+            "target": "F2-C-SOUTH",
+            "weight": 21,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-C-SOUTH",
+            "target": "F2-C-EAST",
+            "weight": 22,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-C-EAST",
+            "target": "F2-C-NORTH",
+            "weight": 36,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-C-NORTH",
+            "target": "F2-C-WEST",
+            "weight": 28,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-201",
+            "target": "F2-C-WEST",
+            "weight": 4,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-214",
+            "target": "F2-C-WEST",
+            "weight": 15,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-215",
+            "target": "F2-C-WEST",
+            "weight": 20,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-217",
+            "target": "F2-C-NORTH",
+            "weight": 17,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-219",
+            "target": "F2-C-NORTH",
+            "weight": 28,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-220",
+            "target": "F2-C-EAST",
+            "weight": 36,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-222",
+            "target": "F2-C-EAST",
+            "weight": 16,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-224",
+            "target": "F2-C-SOUTH",
+            "weight": 15,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-225",
+            "target": "F2-C-SOUTH",
+            "weight": 11,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-227",
+            "target": "F2-C-WEST",
+            "weight": 18,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-C-SOUTH",
+            "target": "F3-LIFT-S",
+            "weight": 5,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-C-NORTH",
+            "target": "F3-S-NW",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-C-EAST",
+            "target": "F3-S-NE",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-C-WEST",
+            "target": "F3-S-SW",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-C-SOUTH",
+            "target": "F3-S-SE",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-C-WEST",
+            "target": "F3-C-SOUTH",
+            "weight": 21,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-C-SOUTH",
+            "target": "F3-C-EAST",
+            "weight": 22,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-C-EAST",
+            "target": "F3-C-NORTH",
+            "weight": 36,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-C-NORTH",
+            "target": "F3-C-WEST",
+            "weight": 28,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-313",
+            "target": "F3-C-WEST",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-315",
+            "target": "F3-C-WEST",
+            "weight": 18,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-316",
+            "target": "F3-C-WEST",
+            "weight": 24,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-318",
+            "target": "F3-C-NORTH",
+            "weight": 21,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-320",
+            "target": "F3-C-EAST",
+            "weight": 36,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-323",
+            "target": "F3-C-EAST",
+            "weight": 14,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-325",
+            "target": "F3-C-SOUTH",
+            "weight": 13,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-327",
+            "target": "F3-C-WEST",
+            "weight": 19,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-C-SOUTH",
+            "target": "F4-LIFT-S",
+            "weight": 5,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-C-NORTH",
+            "target": "F4-S-NW",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-C-EAST",
+            "target": "F4-S-NE",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-C-WEST",
+            "target": "F4-S-SW",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-C-SOUTH",
+            "target": "F4-S-SE",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-C-WEST",
+            "target": "F4-C-SOUTH",
+            "weight": 21,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-C-SOUTH",
+            "target": "F4-C-EAST",
+            "weight": 22,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-C-EAST",
+            "target": "F4-C-NORTH",
+            "weight": 36,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-C-NORTH",
+            "target": "F4-C-WEST",
+            "weight": 28,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-414",
+            "target": "F4-C-WEST",
+            "weight": 12,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-416",
+            "target": "F4-C-WEST",
+            "weight": 16,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-420",
+            "target": "F4-C-WEST",
+            "weight": 29,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-423",
+            "target": "F4-C-NORTH",
+            "weight": 21,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-426",
+            "target": "F4-C-EAST",
+            "weight": 23,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-428",
+            "target": "F4-C-EAST",
+            "weight": 17,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-430",
+            "target": "F4-C-EAST",
+            "weight": 11,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-434",
+            "target": "F4-C-SOUTH",
+            "weight": 13,
+            "is_stairs": false
+        },
+        {
+            "source": "F4-437",
+            "target": "F4-C-WEST",
+            "weight": 20,
+            "is_stairs": false
+        },
+        {
+            "source": "GF-S-NW",
+            "target": "F1-S-NW",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "GF-S-NE",
+            "target": "F1-S-NE",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "GF-S-SW",
+            "target": "F1-S-SW",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "GF-S-SE",
+            "target": "F1-S-SE",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "GF-LIFT-S",
+            "target": "F1-LIFT-S",
+            "weight": 8,
+            "is_stairs": false
+        },
+        {
+            "source": "F1-S-NW",
+            "target": "F2-S-NW",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "F1-S-NE",
+            "target": "F2-S-NE",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "F1-S-SW",
+            "target": "F2-S-SW",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "F1-S-SE",
+            "target": "F2-S-SE",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "F1-LIFT-S",
+            "target": "F2-LIFT-S",
+            "weight": 8,
+            "is_stairs": false
+        },
+        {
+            "source": "F2-S-NW",
+            "target": "F3-S-NW",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "F2-S-NE",
+            "target": "F3-S-NE",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "F2-S-SW",
+            "target": "F3-S-SW",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "F2-S-SE",
+            "target": "F3-S-SE",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "F2-LIFT-S",
+            "target": "F3-LIFT-S",
+            "weight": 8,
+            "is_stairs": false
+        },
+        {
+            "source": "F3-S-NW",
+            "target": "F4-S-NW",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "F3-S-NE",
+            "target": "F4-S-NE",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "F3-S-SW",
+            "target": "F4-S-SW",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "F3-S-SE",
+            "target": "F4-S-SE",
+            "weight": 10,
+            "is_stairs": true
+        },
+        {
+            "source": "F3-LIFT-S",
+            "target": "F4-LIFT-S",
+            "weight": 8,
+            "is_stairs": false
+        }
+    ]
+}
